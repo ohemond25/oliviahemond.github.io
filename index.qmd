@@ -1,11 +1,34 @@
 ---
-title: "oliviahemond.github.io"
+title: "Olivia Hemond"
+image: headshot2.jpg
+toc: false
+about:
+  template: trestles
+  image-shape: round
+  image-width: 20em
+  links: 
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/olivia-hemond-87992418a/
+    - text: GitHub
+      href: https://github.com/ohemond25
+    - text: Email
+      href: mailto:ohemond@ucsb.edu
 ---
 
-This is a Quarto website.
+## Hello! 
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I am an environmental scientist passionate about finding equitable and actionable solutions for the climate and biodiversity crises.
 
-```{r}
-1 + 1
-```
+## Education
+
+**Master in Environmental Science and Management** (Expected 2025) \| Bren School of Environmental Science & Management, UCSB
+
+**BS in Molecular Environmental Biology** (2021) \| UC Berkeley
+
+## Experience
+
+**Directorate Resource Fellow** (Summer 2024) \| US Fish & Wildlife Service
+
+**Arnhold Environmental Graduate Fellow** (2023 - present) \| Environmental Markets Lab (emLab), UCSB
+
+**Environmental Analyst** (2022 - 2023) \| ERG

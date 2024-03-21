@@ -3,18 +3,21 @@ project:
   output-dir: docs
 
 website:
-  title: "oliviahemond.github.io"
+  title: "Olivia Hemond"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - href: projects.qmd
+        text: Projects
 
 format:
   html:
-    theme: cosmo
+    theme: litera
     css: styles.css
     toc: true
+    page-layout: full
 
 editor: visual
 

@@ -4,13 +4,34 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "About Me"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "oliviahemond.github.io",
+    "title": "Olivia Hemond",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "I am an environmental scientist passionate about finding equitable and actionable solutions for the climate and biodiversity crises."
+  },
+  {
+    "objectID": "index.html#hello",
+    "href": "index.html#hello",
+    "title": "Olivia Hemond",
+    "section": "",
+    "text": "I am an environmental scientist passionate about finding equitable and actionable solutions for the climate and biodiversity crises."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Olivia Hemond",
+    "section": "Education",
+    "text": "Education\nMaster in Environmental Science and Management (Expected 2025) | Bren School of Environmental Science & Management, UCSB\nBS in Molecular Environmental Biology (2021) | UC Berkeley"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Olivia Hemond",
+    "section": "Experience",
+    "text": "Experience\nDirectorate Resource Fellow (Summer 2024) | US Fish & Wildlife Service\nArnhold Environmental Graduate Fellow (2023 - present) | Environmental Markets Lab (emLab), UCSB\nEnvironmental Analyst (2022 - 2023) | ERG"
   }
 ]

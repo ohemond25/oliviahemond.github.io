@@ -5,16 +5,22 @@ project:
 website:
   title: "Olivia Hemond"
   navbar:
-    left:
+    right:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: About
       - href: projects.qmd
-        text: Projects
+        text: Portfolio
+      - href: Resume.pdf
+        text: Resume
+
 
 format:
   html:
-    theme: litera
+    theme:
+      - litera
+      - styles.scss
     css: styles.css
     toc: true
     page-layout: full

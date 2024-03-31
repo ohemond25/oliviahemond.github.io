@@ -1,0 +1,266 @@
+---
+title: "Binary Logistic Regression"
+description: "Using a binary logistic regression model to classify plant species"
+author: "Olivia Hemond"
+date: 03-01-2024
+image: fig1.png
+draft: false
+categories: [R, Modeling, Regression, Visualization, Cross-Validation]
+format: 
+  html:
+    code-fold: true
+    toc: true
+    embed-resources: true
+editor: visual
+theme: minty
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+# Overview
+
+This dataset describes the survival and growth of two species of palmetto (*Serenoa repens* and *Sabal etonia*), as measured at Archbold Biological Station in Florida. Both species are types of fan palm. The scientists studying these species measured plant height, canopy length and width, number of green leaves, and other characteristics of the plants' growth. Data were collected annually from 1981 - 1997, and then again in 2001 and in 2017.
+
+The purpose of this analysis is to test whether measurements of height, canopy length, canopy width, and number of green leaves can be used to classify whether an unknown plant is a member of *S. repens* or *S. etonia*. I used binary logistic regression to create the classification model.
+
+My analytical process went as follows:
+
+1.  Obtain and tidy data
+
+    -   Read in and clean the data
+
+2.  Explore and visualize data
+
+    -   Create boxplots to compare the distribution of values for each variable between the two species
+
+3.  Compare two binary logistic regression models
+
+    -   Define the two model formulas
+
+    -   Use ten-fold cross validation to fit the models
+
+    -   Compare the predictive performance of the two models
+
+4.  Train selected model
+
+    -   Use entire, clean dataset to train the model and obtain finalized parameter results
+
+5.  Present classification results
+
+    -   Generate species predictions based on best model
+
+    -   Calculate the number of correct and incorrect predictions for each species
+
+    -   Calculate the percent of correct predictions for each species
+
+See the corresponding sections in this analysis for more detailed descriptions of the steps involved in this analysis.
+
+**Data source:** Abrahamson, W.G. 2019. Survival, growth and biomass estimates of two dominant palmetto species of south-central Florida from 1981 - 2017, ongoing at 5-year intervals ver 1. Environmental Data Initiative. <https://doi.org/10.6073/pasta/f2f96ec76fbbd4b9db431c79a770c4d5>
+
+# Obtain and Tidy Data
+
+### Libraries
+
+```{r setup}
+library(tidyverse)
+library(tidymodels)
+library(here)
+library(cowplot)
+library(knitr)
+library(kableExtra)
+```
+
+### Read in data
+
+```{r}
+p_df <- read_csv(here("posts", "2024-03-01-blr", "data", "palmetto.csv"))
+```
+
+### Clean data
+
+I removed unnecessary columns and assigned factor levels to my two species ID numbers. Species 1 = *S. repens* and Species 2 = *S. etonia*
+
+```{r}
+p_clean <- p_df %>% 
+  select(species, height:green_lvs) %>% 
+  mutate(species = as_factor(species)) %>% 
+  drop_na()
+```
+
+# Exploratory Visualizations
+
+I am interested in whether height, width, length, and number of green leaves are good variables to use to differentiate between my two species. To be good predictors, there should be notable differences in these values between the species. I decided to explore these four variables using boxplots.
+
+```{r create plots}
+height_plot <- ggplot(data = p_clean) + 
+  geom_boxplot(aes(x = as_factor(species), y = height), fill = "olivedrab3", color = "olivedrab") +
+  scale_x_discrete(labels = c("1" = "S. repens", "2" = "S. etonia")) +
+  labs(x = "", y = "Height (cm)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(face = "italic"))
+
+width_plot <- ggplot(data = p_clean) + 
+  geom_boxplot(aes(x = as_factor(species), y = width), fill = "olivedrab3", color = "olivedrab") +
+  scale_x_discrete(labels = c("1" = "S. repens", "2" = "S. etonia")) +
+  labs(x = "", y = "Width (cm)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(face = "italic"))
+
+length_plot <- ggplot(data = p_clean) + 
+  geom_boxplot(aes(x = as_factor(species), y = length), fill = "olivedrab3", color = "olivedrab") +
+  scale_x_discrete(labels = c("1" = "S. repens", "2" = "S. etonia")) +
+  labs(x = "", y = "Length (cm)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(face = "italic"))
+
+leaves_plot <- ggplot(data = p_clean) + 
+  geom_boxplot(aes(x = as_factor(species), y = green_lvs), fill = "olivedrab3", color = "olivedrab") +
+  scale_x_discrete(labels = c("1" = "S. repens", "2" = "S. etonia")) +
+  labs(x = "", y = "Number of Green Leaves") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(face = "italic"))
+```
+
+```{r show plots}
+#| label: fig-variables
+#| fig-cap: "Boxplots comparing height, width, length, and number of green leaves for *S. repens* and *S. etonia.*"
+
+
+plot_grid(height_plot, width_plot, length_plot, leaves_plot,
+          labels = c("A", "B", "C", "D"),
+          ncol = 2,
+          vjust = 1)
+```
+
+**Takeaways:**
+
+Plant heights between the two species look fairly similar, so height may not be a good predictor of species. There may be some difference in plant widths, and even more noticeable differences in length and number of green leaves. I expect length and green leaves to be especially important predictors, since they seem to show the largest differences between species.
+
+# Binary Logistic Regression Models
+
+### Create formulas
+
+I am interested in comparing two models. One model predicts species based on height, length, width, and green leaves (Model 1). The other model predicts species based only on height, width, and green leaves (Model 2). The difference between the two is whether length is used as a predictor variable.
+
+```{r}
+# model 1
+f1 <- species ~ height + length + width + green_lvs
+# model 2
+f2 <- species ~ height + width + green_lvs
+```
+
+### Ten-Fold Cross Validation
+
+Now that the two model formulas are defined, it is time to see which performs better at classification. I decided to use ten-fold cross validation to repeatedly fit the models to ten different subsets of the data, and then I extracted the average performance metrics from each model.
+
+```{r}
+# create folded version of dataset
+set.seed(10101)
+p_folds <- vfold_cv(p_clean, v = 10, repeats = 10)
+```
+
+```{r}
+# set up model
+blr_mdl <- logistic_reg() %>% 
+  set_engine('glm')
+
+# create workflows
+blr_wf_1 <- workflow() %>% 
+  add_model(blr_mdl) %>% 
+  add_formula(f1) 
+
+blr_wf_2 <- workflow() %>% 
+  add_model(blr_mdl) %>% 
+  add_formula(f2)
+
+# apply the workflows to the folded data
+blr_fit_folds_1 <- blr_wf_1 %>% 
+  fit_resamples(p_folds)
+blr_fit_folds_2 <- blr_wf_2 %>% 
+  fit_resamples(p_folds)
+```
+
+### Cross Validation Results
+
+```{r}
+#| label: tbl-metrics
+#| tbl-cap: "Comparing the predictive performance of the two models. The results for the accuracy and area under the ROC curve are presented for both Model 1 (a) and Model 2 (b)."
+#| tbl-subcap: 
+#|   - "Model 1"
+#|   - "Model 2"
+#| layout-nrow: 2
+
+collect_metrics(blr_fit_folds_1) %>% 
+  select(-.config) %>% 
+  rename(metric = .metric,
+         estimator = .estimator,
+         standard_error = std_err) %>% 
+  kbl() %>% 
+  kable_styling("basic", position = "center")
+
+collect_metrics(blr_fit_folds_2) %>% 
+  select(-.config) %>% 
+  rename(metric = .metric,
+         estimator = .estimator,
+         standard_error = std_err) %>% 
+  kbl() %>% 
+  kable_styling("basic", position = "center")
+```
+
+**Results:**
+
+Based on the results of the cross validation, I am choosing Model 1 as the better model. Model 1 has a greater area under the receiver operating characteristic (ROC) curve than Model 2 has (0.9725 compared with 0.9635). The model with a greater area under the curve is the better classifier. In addition, Model 1 had a slightly higher accuracy rate than Model 2 (91.7% compared with 89.9%). Though Model 1 ended up winning based on area under the curve and accuracy, it is worth noting that both models performed very well.
+
+# Train Selected Model
+
+I next trained Model 1 using the entire dataset (without any folding) to obtain my final coefficient results for each predictor variable (shown in the "estimate" column of the table below).
+
+```{r}
+## run model on entire dataset
+blr1_fit <- blr_mdl %>% 
+  fit(formula = f1, data = p_clean)
+```
+
+```{r}
+#| label: tbl-results
+#| tbl-cap: "Final Model 1 results. Coefficient values for the intercept, as well as for each of the four predictor variables, are shown. Standard errors and p-values for the coefficients are also included."
+
+# create table with blr results
+broom::tidy(blr1_fit) %>% 
+  select(-statistic) %>% 
+  kbl() %>% 
+  kable_styling("basic", position = "center")
+```
+
+# Classification Results
+
+Using my finalized Model 1, I decided to evaluate its predictive strength. I generated predicted species classifications for each observed set of plant height, width, length, and green leaves in the dataset, then compared these predictions to the actual species identities. Predictions were made using a 50% cutoff, meaning that a species was classified as species 1 if the probability of it being species 1, based on my Model 1 results, was 50% or greater.
+
+```{r}
+# generate predictions
+p_predict <- p_clean %>% 
+  mutate(predict(blr1_fit, new_data = .)) %>% 
+  mutate(predict(blr1_fit, new_data = ., type = 'prob'))
+
+# make table of prediction results
+predict_table <- table(p_predict %>%
+        select(species, .pred_class))
+```
+
+```{r}
+#| label: tbl-predictions
+#| tbl-cap: "Model 1 predictions. For each species, the number of correct predictions and incorrect predictions are shown. The leftmost column depicts the percent of predictions that were correct."
+
+kbl(data.frame(
+  species = c("1", "2"),
+  n_correct = c(5548, 5701),
+  n_incorrect = c(564, 454)) %>% 
+  mutate(p_correct = n_correct/(n_correct+n_incorrect))) %>% 
+  kable_styling("basic", position = "center")
+```
+
+**Conclusion:**
+
+My fitted Model 1 classified observations of species 1 (*S. repens*) correctly 91% of the time, and of species 2 (*S. etonia*) correctly 93% of the time. While the model is not perfect, it does have a very high accuracy rate. The model could potentially be improved if other strong predictor variables could be found and included.

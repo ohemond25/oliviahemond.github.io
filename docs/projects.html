@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Olivia Hemond - Data Science Projects</title>
+<title>Olivia Hemond - Project Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -59,7 +61,38 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -80,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
@@ -91,10 +124,14 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./projects.html" rel="" target="" aria-current="page">
- <span class="menu-text">Projects</span></a>
+ <span class="menu-text">Portfolio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Resume.pdf" rel="" target="">
+ <span class="menu-text">Resume</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+            <div class="quarto-navbar-tools">
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -104,15 +141,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="Clustering">Clustering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Cross-Validation">Cross-Validation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Modeling">Modeling <span class="quarto-category-count">(2)</span></div><div class="category" data-category="PCA">PCA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(8)</span></div><div class="category" data-category="Regression">Regression <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Spatial">Spatial <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Text">Text <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Time Series">Time Series <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Visualization">Visualization <span class="quarto-category-count">(8)</span></div></div></div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Science Projects</h1>
+<h1 class="title">Project Portfolio</h1>
 </div>
 
 
@@ -130,7 +167,305 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="R,Visualization,Clustering" data-listing-date-sort="1710658800000" data-listing-file-modified-sort="1711835392023" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<a href="./posts/2024-03-17-clustering/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/2024-03-17-clustering/fig3.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Hierarchical Clustering
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Clustering'); return false;">
+Clustering
+</div>
+</div>
+<div class="card-text listing-description">
+Using agglomerative hierarchical clustering to group stream sites by water chemistry
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Olivia Hemond
+</div>
+<div class="listing-date">
+Mar 17, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="R,Visualization,PCA" data-listing-date-sort="1710572400000" data-listing-file-modified-sort="1711834852773" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<a href="./posts/2024-03-16-pca/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/2024-03-16-pca/fig2.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Principal Components Analysis
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('PCA'); return false;">
+PCA
+</div>
+</div>
+<div class="card-text listing-description">
+Using PCA to determine the relationship between historical redlining practices and present-day environmental health inequities
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Olivia Hemond
+</div>
+<div class="listing-date">
+Mar 16, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="R,Visualization,Modeling" data-listing-date-sort="1709366400000" data-listing-file-modified-sort="1711834283863" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
+<a href="./posts/2024-03-02-nls/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/2024-03-02-nls/fig2.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Non-Linear Least Squares
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Modeling'); return false;">
+Modeling
+</div>
+</div>
+<div class="card-text listing-description">
+Describing and predicting crop yields using fitted non-linear least squares models
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Olivia Hemond
+</div>
+<div class="listing-date">
+Mar 2, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="R,Modeling,Regression,Visualization,Cross-Validation" data-listing-date-sort="1709280000000" data-listing-file-modified-sort="1711833855699" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
+<a href="./posts/2024-03-01-blr/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/2024-03-01-blr/fig1.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Binary Logistic Regression
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Modeling'); return false;">
+Modeling
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Regression'); return false;">
+Regression
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Cross-Validation'); return false;">
+Cross-Validation
+</div>
+</div>
+<div class="card-text listing-description">
+Using a binary logistic regression model to classify plant species
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Olivia Hemond
+</div>
+<div class="listing-date">
+Mar 1, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="R,Text,Visualization" data-listing-date-sort="1708156800000" data-listing-file-modified-sort="1711838772864" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
+<a href="./posts/2024-02-17-text-analysis/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/2024-02-17-text-analysis/fig4.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Text Sentiment Analysis
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Text'); return false;">
+Text
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<div class="card-text listing-description">
+Extracting text and performing a sentiment analysis on Harry Potter and the Prisoner of Azkaban
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Olivia Hemond
+</div>
+<div class="listing-date">
+Feb 17, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="R,Spatial,Visualization" data-listing-date-sort="1708070400000" data-listing-file-modified-sort="1711838969369" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<a href="./posts/2024-02-16-spatial-data/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/2024-02-16-spatial-data/fig2.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Spatial Data Analysis
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Spatial'); return false;">
+Spatial
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<div class="card-text listing-description">
+Analyzing the spatial distribution of inland oil spills in California
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Olivia Hemond
+</div>
+<div class="listing-date">
+Feb 16, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="R,Visualization,Time Series" data-listing-date-sort="1706860800000" data-listing-file-modified-sort="1711840710151" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<a href="./posts/2024-02-02-time-series/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/2024-02-02-time-series/coho.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Time Series Analysis
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Time Series'); return false;">
+Time Series
+</div>
+</div>
+<div class="card-text listing-description">
+Assessing temporal patterns of salmon and steelhead trout migration
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Olivia Hemond
+</div>
+<div class="listing-date">
+Feb 2, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="R,Visualization" data-listing-date-sort="1706601600000" data-listing-file-modified-sort="1711832898455" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<a href="./posts/2024-01-30-data-wrangling/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/2024-01-30-data-wrangling/frog.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Data Wrangling and Visualization
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Visualization'); return false;">
+Visualization
+</div>
+</div>
+<div class="card-text listing-description">
+Investigating mountain yellow-legged frog abundance
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Olivia Hemond
+</div>
+<div class="listing-date">
+Jan 30, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,0 +1,314 @@
+---
+title: "Non-Linear Least Squares"
+description: "Describing and predicting crop yields using fitted non-linear least squares models"
+author: "Olivia Hemond"
+date: 03-02-2024
+image: fig2.png
+draft: false
+categories: [R, Visualization, Modeling]
+format: 
+  html:
+    code-fold: show
+    toc: true
+    embed-resources: true
+editor: visual
+theme: pulse
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+# Overview
+
+## Data Summary
+
+**Description:**
+
+The data used in this analysis is from a study of sorghum and maize growth in Greece. Sweet sorghum, fiber sorghum, and maize were grown in experimental plots. Half of the plots for each plant were exposed to optimum inputs of water and nitrogen, while the other half were exposed to limited water and nitrogen inputs. The scientists measured how the biomass (yield) for each crop type changed over time under these different experimental conditions.
+
+**Variables:**
+
+-   DOY = day of year (141 - 303)
+
+-   Block = block in experimental design (1 - 4)
+
+-   Input = level of water and nitrogen input. Either 1 (low) or 2 (high)
+
+-   Crop = crop type (M = maize, S = sweet sorghum, F = fiber sorghum)
+
+-   Yield = biomass yield in Mg/ha
+
+**Data source:**
+
+Danalatos, N.G., S.V. Archontoulis, and K. Tsiboukas. 2009. Comparative analysis of sorghum versus corn growing under optimum and under water/nitrogen limited conditions in central Greece. In: From research to industry and markets: Proceedings of the 17th European Biomass Conference, Hamburg, Germany. 29 June–3 July 2009. ETA–Renewable Energies, Florence, Italy. p. 538–544.
+
+## Purpose
+
+The **purpose** of this analysis is to fit models to the crop dataset using non-linear least squares (NLS). I can optimize the parameters of the model to find the best fitted model for each species of crop. These models can then be used to predict crop yields at various time points for each of these crops, and to assess the impact of fertilizer use on overall crop growth.
+
+**The Beta function**
+
+The model for this analysis is the Beta function from Table 1, Equation 2.5 of Archontoulis & Miguez, 2015 (see [here](https://acsess.onlinelibrary.wiley.com/doi/10.2134/agronj2012.0506)). This is a sigmoid function and I will use it to describe plant biomass (yield) as a function of time.
+
+**Beta function variables and parameters**
+
+-   y = response variable
+
+-   ymax = maximum value of response variable
+
+-   t = explanatory variable
+
+-   te = value of explanatory variable when y equals its asymptotic value
+
+-   tm = inflection point at which growth rate is at its maximum
+
+### Outline
+
+The steps of this analysis are as follows:
+
+1.  Write Beta function
+
+    -   Read in and tidy data
+
+    -   Create a function in R based upon the Beta function's mathematical formula
+
+2.  Run one NLS model
+
+    -   Generate initial guesses for parameter values
+
+    -   Run model for just one crop and input level
+
+    -   Plot fitted model
+
+3.  Run multiple NLS models
+
+    -   Run models on each combination of plot, crop species, and input level
+
+    -   Find the best fitted model for each crop
+
+4.  Create final visual
+
+    -   Plot crop data with smoothed models to understand how fertilizer impacts yield
+
+# Write Beta Function
+
+### Load libraries
+
+```{r setup}
+library(tidyverse)
+library(nlraa)
+library(knitr)
+library(kableExtra)
+```
+
+### Read in and clean the data
+
+```{r}
+df <- sm %>% janitor::clean_names()
+```
+
+### Write Beta function in R
+
+This function was constructed to match Table 1, Equation 2.5 of Archontoulis & Miguez, 2015.
+
+```{r beta function}
+beta <- function(ymax, te, tm, t){
+  y_out <- ymax*(1+(te-t)/(te-tm))*(t/te)^(te/(te-tm))
+  return(y_out)
+  }
+```
+
+# Run One NLS Model
+
+### Experiment with initial guesses
+
+To fit the function correctly, it must be given initial parameter values that are reasonably close to their actual values. Using a plot of the data, I visually identified potential starting values based upon the definitions of ymax, te, and tm. I graphed a simulation of the function using those input values and modified them slightly until the model appeared to fit the data reasonably well.
+
+```{r biomass over time plot}
+# use beta model to simulate outputs using parameter guesses 
+beta_sim <- df %>% 
+  mutate(sim = beta(ymax = 52, te = 280, tm = 220, t = doy))
+
+# plot to figure out best starting parameter estimates
+sim_plot <- ggplot(beta_sim, aes(x = doy, y = yield, color = "data")) +
+  geom_point() +
+  geom_line(aes(x = doy, y = sim, color = "model")) +
+  scale_color_manual(values = c("data" = "black", "model" = "green4")) +
+  theme_minimal()
+```
+
+### Set initial guesses
+
+For my first NLS model, I set the initial parameter values based upon the guesses I made in the section above.
+
+```{r guesses}
+ymax_guess <- max(df$yield)
+te_guess <- 280
+tm_guess <- 220
+```
+
+### Filter data
+
+This first model will be fit to the yield data from just sweet sorghum with high water and nitrogen inputs. I filtered the dataset to just this subset for the model fitting.
+
+```{r filter data}
+df_filter <- df %>% 
+  filter(crop == "S" & input == 2)
+```
+
+### Run NLS
+
+I ran NLS using the Beta function, the subset of sweet sorghum data, and the initial parameter guesses defined above. Below is a table of the estimated model parameters.
+
+```{r run first nls}
+one_nls <- nls(
+    formula = yield ~ beta(ymax, te, tm, doy),
+    data = df_filter,
+    start = list(ymax = ymax_guess, te = te_guess, tm = tm_guess),
+    trace = FALSE)
+```
+
+```{r parameter table}
+#| label: tbl-oneNLS
+#| tbl-cap: "Parameter value estimates, standard errors, t-values and p-values for the NLS model fitted to high-input sweet sorghum biomass data."
+kbl(coef(summary(one_nls)))
+```
+
+### Plot NLS model
+
+I used the fitted model to predict values for each day of data collection, and then plotted these predicted outputs on top of the observed crop data.
+
+```{r predict and plot first nls}
+#| label: fig-oneNLS
+#| fig-cap: "NLS model outputs from the Beta function, graphed on top of crop biomass observations. Each crop is depicted as a separate color. Model was fitted using only high-input sweet sorghum data."
+
+# create df with addition column of predicted values based on fitted model
+one_nls_predict <- df_filter %>% 
+  mutate(predict = predict(one_nls, newdata = doy))
+
+# plot 
+ggplot() +
+  geom_point(data = df, 
+             aes(x = doy, y = yield, color = crop, shape = crop), alpha = 0.8) +
+  geom_path(data = one_nls_predict, aes(x = doy, y = predict), color = "black", size = 0.7) +
+  scale_color_manual(values = c("darkorchid3", "goldenrod2", "orchid2")) +
+  labs(x = "Day of the Year", y = "Biomass (Mg/ha)",
+       color = "Crop", shape = "Crop") +
+  theme_minimal() 
+```
+
+**Results:**
+
+While the model seems to fit the sweet and fiber sorghum data reasonably well, it does not appear to fit the maize data very well. This indicates that I may need a separate model fitted for each type of crop.
+
+# Run Multiple NLS Models
+
+Given the results above, I decided to fit my models separately for each crop species, input level, and experimental block (plot). This way, they can be more specifically tailored to the fact that biomass yield will differ based upon these experimental variables.
+
+### Define NLS function
+
+To iterate, I needed to turn my NLS process into a function that could take any subset of my dataset and fit a model to it using the Beta function.
+
+```{r}
+# Define new function
+all_nls_fxn <- function(crop_df){
+  ymax_guess <- max(crop_df$yield)
+  te_guess <- 286
+  tm_guess <- 247
+  
+  nls(
+    formula = yield ~ beta(ymax, te, tm, doy),
+    data = crop_df,
+    start = list(ymax = ymax_guess, te = te_guess, tm = tm_guess))
+}
+```
+
+### Generate predictions
+
+I then nested my data, so that I had 24 different subsets based upon different combinations of crop, input level, and experimental block. Using the NLS function, I then fit my model, generated predictions, and calculated RMSE values for each model fit to each subset of data. I also calculated smoothed model predictions, which give an output for *every day* within the study period, not just the actual days that the scientists took measurements on.
+
+```{r}
+beta_all <- df %>% 
+  group_by(block, input, crop) %>% 
+  nest() %>% 
+  mutate(nls_model = map(data, ~all_nls_fxn(.x)),
+         predictions = map2(nls_model, data, ~predict(.x, newdata = .y)),
+         smooth = map(nls_model, ~predict(.x, newdata = list(doy=seq(141,303)))),
+         rmse = map2_dbl(predictions, data, ~Metrics::rmse(.x, .y$yield)))
+```
+
+### Pick best models
+
+I identified the best models for each species based upon RMSE values. Lower RMSE values indicate better model fit. The estimated parameter values are shown in the tables below.
+
+```{r}
+lowest_rmse <- beta_all %>% 
+  group_by(crop) %>% 
+  slice_min(order_by = rmse)
+```
+
+```{r}
+#| label: tbl-rmse
+#| tbl-cap: "Parameter value estimates, standard errors, t-values and p-values for the NLS model with the lowest RMSE value for each crop species."
+#| tbl-subcap: 
+#|   - "Fiber Sorghum"
+#|   - "Maize"
+#|   - "Sweet Sorghum"
+#| layout-nrow: 3
+
+# F
+broom::tidy(lowest_rmse$nls_model[[1]]) %>% 
+  kbl()
+# M
+broom::tidy(lowest_rmse$nls_model[[2]]) %>% 
+  kbl()
+# S
+broom::tidy(lowest_rmse$nls_model[[3]]) %>% 
+  kbl()
+```
+
+# Final Visualization
+
+As a final visualization, I graphed the observed crop biomass data with the smoothed outputs of my fitted NLS models for each crop species and input level. For simplicity, the data and models are limited to the plants grown in experimental block #1.
+
+```{r}
+# filter observed data to plot 1
+filter_1_low <- df %>% 
+  filter(block == 1)
+
+# filter smoothed predictions to plot 1
+smooth_1_low <- beta_all %>% 
+  filter(block == 1) %>% 
+  unnest(cols = c(smooth)) %>% 
+  select(crop, smooth) %>% 
+  mutate(doy_smooth = seq(141, 303)) %>% # add doy for smoothed outputs
+  filter(!(crop == "M" & doy_smooth > 263)) # maize data not collected after day 263
+```
+
+```{r}
+#| label: fig-final
+#| fig-cap: "Observed crop biomass and fitted NLS model predictions for each crop species and input level. All data and model outputs are for experimental block 1."
+
+# plot by input
+ggplot() +
+  geom_point(data = filter_1_low, 
+             aes(x = doy, y = yield, shape = crop, color = crop)) +
+  geom_path(data = smooth_1_low, 
+            aes(x = doy_smooth, y = smooth, linetype = crop, color = crop), 
+            linewidth = 0.7) +
+  facet_wrap(~input,
+             labeller = labeller(input = c("1" = "Low Inputs", "2" = "High Inputs"))) +
+  scale_color_manual(values = c("darkorchid3", "goldenrod2", "orchid2")) +
+  labs(x = "Day of the Year", y = "Biomass (Mg/ha)",
+       color = "Crop", shape = "Crop", linetype = "Crop") +
+  theme_light() +
+  theme(legend.position = c(0.08, 0.8), 
+        legend.box.background = element_rect(color = "darkorchid4", size = 0.5),
+        strip.text.x = element_text(size = 11),
+        strip.background = element_rect(fill="darkorchid4"))
+```
+
+**Results:**
+
+As shown in the figure, late-year biomass yield for every crop species is greatest in the high-input scenario. This indicates that increased fertilizer and water inputs lead to increased final crop yields. Interestingly, there is not as large of a difference between input levels for projected yields during the first half of the growing season.

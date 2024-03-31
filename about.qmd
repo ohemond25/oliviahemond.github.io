@@ -1,5 +1,41 @@
 ---
-title: "About"
+toc: false
+about:
+  template: solana
 ---
 
-About Me
+## About Me
+
+I am a master's student in Environmental Science and Management at the Bren School at UCSB, specializing in Conservation Planning and Strategic Environmental Communications. I'm focusing my degree on climate adaptation, ecological resilience, and data science. For my master's capstone project, my team and I will provide a forest collaborative in Colorado with the information and tools needed to implement adaptive forest management practices. I also hold a B.S. in Molecular Environmental Biology from UC Berkeley, where I studied how global environmental change is impacting organisms, ecosystems, and human well-being. I have professional experience working as a research assistant, a teacher, and an environmental analyst. 
+
+I hope to use my cross-disciplinary expertise to bridge the gap between science and action. My goal is to work as an environmental planner, specializing in climate adaptation, community resilience, and hazard mitigation.
+
+Though I've spent a number of years living in California, and one in Spain, I was raised in Massachusetts and that's where I call home. In my free time, I love exploring the outdoors, trying new restaurants, making art, and traveling.
+
+::: panel-tabset
+
+### Experience
+
+**Directorate Resource Fellow** (Summer 2024) \| U.S. Fish & Wildlife Service
+
+**Arnhold Environmental Graduate Fellow** (2023 - present) \| Environmental Markets Lab (emLab), UCSB
+
+**Environmental Analyst** (2022 - 2023) \| ERG
+
+### Education
+
+**Master in Environmental Science and Management** (Expected 2025) \| Bren School of Environmental Science & Management, UCSB
+
+**BS in Molecular Environmental Biology** (2021) \| UC Berkeley
+
+### Conferences
+
+National Adaptation Forum, May 2024, St. Paul MN *(attendee)*
+
+Point Conception Institute Science Symposium, March 2024, Santa Barbara CA *(attendee)*
+
+Emerging Researchers National Conference in STEM, February 2020, Washington D.C. *(presenter)*
+
+SEA Fellows Summer Science Symposium, August 2019, Walpole ME *(presenter)*
+
+:::

@@ -1,0 +1,202 @@
+---
+title: "Spatial Data Analysis"
+description: "Analyzing the spatial distribution of inland oil spills in California"
+author: "Olivia Hemond"
+date: 02-16-2024
+image: fig2.png
+draft: false
+categories: [R, Spatial, Visualization]
+format: 
+  html:
+    code-fold: show
+    toc: true
+    number-sections: false
+    embed-resources: true
+editor: visual
+theme: flatly
+execute:
+  echo: true
+  message: false
+  warning: false
+---
+
+# Oil Spill Incidents: Spatial Data Visualization
+
+[![Oil spill cleanup at a beach in Orange County, CA. Photo credits: New York Magazine](oilspill.jpg){fig-align="center"}](https://nymag.com/intelligencer/2021/10/californias-oil-leak-is-part-of-a-larger-disaster.html)
+
+## Overview
+
+### Data Summary
+
+This analysis looks at inland oil spills across the state of California in 2008, as documented by the California Department of Fish and Wildlife Office of Spill Prevention and Response (OSPR).
+
+Data source: California Department of Fish and Wildlife. Oil Spill Incident Tracking. Published Jul 29 2009. Last updated Oct 24 2023. Data download available [here](https://gis.data.ca.gov/datasets/7464e3d6f4924b50ad06e5a553d71086_0/explore?location=36.705306%2C-119.422009%2C6.74).
+
+### Purpose
+
+This analysis had three main goals:
+
+1.  Visualize the locations of 2008 oil spills across the state of California
+
+2.  Identify which counties in the state had the highest number of oil spills that year
+
+3.  Assess whether oil spills are spatially clustered or randomly spaced across the state
+
+### Analytical Outline
+
+1.  Import and Clean Data
+    -   Read in California counties shapefile
+
+    -   Read in CSV file containing oil spill data
+
+    -   Convert oil spill dataframe to simple features object
+
+    -   Check the CRS of the counties file; set oil spill sf to same CRS
+2.  Create Interactive Map
+    -   Create map of California with points denoting oil spills
+
+    -   Make map interactive so the user can zoom and click on points
+3.  Create Choropleth Map
+    -   Spatial join the counties with the oil spill points
+
+    -   Calculate the number of oil spills in each county
+
+    -   Visualize on a static choropleth map to identify counties with highest oil spill incidences
+4.  Point Pattern Analysis
+    -   Convert oil spill observations into a spatial point pattern
+    -   Use the state of California as our observation window
+    -   Calculate actual and theoretical (complete spatial randomness) nearest neighbor distances using the G function
+    -   Plot the G function results for our observed data and the theoretical data
+
+## Import and Clean Data
+
+```{r setup}
+library(tidyverse)
+library(here)
+library(sf)
+library(tmap)
+library(spatstat)
+```
+
+### Read in data
+
+```{r}
+### Read in California counties
+ca_counties_sf <- read_sf(here('posts', '2024-02-16-spatial-data', 'data', 'ca_counties'), layer = 'CA_Counties_TIGER2016') %>%
+  janitor::clean_names() %>% 
+  select(name)
+
+### Read in oil spill csv
+oil_df <- read_csv(here('posts', '2024-02-16-spatial-data', 'data', 'oil_spill.csv')) %>% 
+  janitor::clean_names()
+```
+
+### Convert dataframe to simple features
+
+```{r}
+### Convert lat-long oil dataframe to sf
+oil_sf <- oil_df %>% 
+  drop_na(x, y) %>% 
+  st_as_sf(coords = c("x", "y"))
+```
+
+### Set matching CRS
+
+```{r}
+### Check CRS of counties file
+# st_crs(ca_counties_sf) # "EPSG", 3857
+
+### Set oil sf CRS to CRS of CA counties
+st_crs(oil_sf) <- 3857
+
+### Check CRSs are equal
+# st_crs(oil_sf) == st_crs(ca_counties_sf)
+```
+
+## Interactive Map
+
+```{r}
+#| label: fig-interactivemap
+#| fig-cap: Oil spill incidents across California in 2008. Clicking a point will reveal its incident date, location, the affected waterway, and other key information.
+
+### set the viewing mode to interactive
+tmap_mode(mode = 'plot')
+
+tm_shape(ca_counties_sf) +
+  tm_fill(col = "white") +
+  tm_shape(oil_sf) +
+  tm_dots(col = "darkblue")
+
+```
+
+## Choropleth Map
+
+```{r}
+#| label: fig-choroplethmap
+#| fig-cap: Oil spill incident counts per county in California in 2008. Darker blue values represent greater numbers of oil spills.
+
+### Spatial join counties and oil spills
+counties_oil_sf <- st_join(ca_counties_sf, oil_sf)
+
+### Count the number of oil spills in each county
+oil_counts_sf <- counties_oil_sf %>% 
+  group_by(name) %>% 
+  summarize(oil_count = n())
+
+### Plot
+ggplot(oil_counts_sf) +
+  geom_sf(aes(fill = oil_count)) +
+  labs(fill = "Number of Oil Spills") +
+  scale_fill_gradientn(colors = c("white", "lightblue", "blue", "darkblue")) +
+  theme_void()
+```
+
+The counties with the greatest number of oil spills, in order, are Los Angeles and San Diego in Southern California, and San Mateo, Alameda, and Contra Costa in Northern California.
+
+## Point Pattern Analysis
+
+```{r}
+### Convert oil spill observations to spatial point pattern (to use with spatstat package)
+oil_ppp <- as.ppp(oil_sf)
+
+### Set our observation window to be the extent of California
+ca_counties_win <- as.owin(ca_counties_sf)
+
+### Create point pattern dataset
+oil_full <- ppp(oil_ppp$x, oil_ppp$y, window = ca_counties_win)
+
+```
+
+```{r}
+### Make a sequence of distances over which you'll calculate G(r)
+r_vec <- seq(0, 20000, by = 200) 
+
+### Calculate the actual and theoretical G(r) values, using 100 simulations of CSR for the "theoretical" outcome
+gfunction_out <- envelope(oil_full, fun = Gest, r = r_vec, nsim = 100, verbose = FALSE) 
+
+### Convert output to dataframe, and pivot to tidy form
+gfunction_long <- gfunction_out %>% 
+  as.data.frame() %>% 
+  pivot_longer(cols = obs:hi, names_to = "model", values_to = "g_val")
+```
+
+```{r}
+#| label: fig-gfunctionPlot
+#| fig-cap: G function for observed oil spill data (blue) in comparison with theoretical complete spatial randomness (black). Red lines indicate the 95th percentile (low and high) around the theoretical model.
+
+### Then make a graph in ggplot:
+ggplot(data = gfunction_long, aes(x = r, y = g_val, group = model)) +
+  geom_line(aes(color = model)) +
+  scale_color_manual(values = c("red", "red", "blue", "black"),
+                     name = "",
+                     labels = c("hi" = "High 95th Percentile", 
+                                "lo" = "Low 95th Percentile", 
+                                "theo" = "Theoretical Complete Spatial Randomness", 
+                                "obs" = "Observed")) +
+  labs(x = 'Distance (m)', y = 'G(r)') +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+-   Our observed data is highly clustered, because the vast majority of points have a nearest neighbor that is *closer* than they would otherwise be in a situation with complete spatial randomness (CSR).
+-   This is shown in the above graph, since the G(r) of our observations is above the G(r) of theoretical CSR.

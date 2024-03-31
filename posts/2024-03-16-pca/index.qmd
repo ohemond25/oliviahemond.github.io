@@ -1,0 +1,142 @@
+---
+title: "Principal Components Analysis"
+description: "Using PCA to determine the relationship between historical redlining practices and present-day environmental health inequities"
+author: "Olivia Hemond"
+date: 03-16-2024
+image: fig2.png
+draft: false
+categories: [R, Visualization, PCA]
+format: 
+  html:
+    code-fold: show
+    toc: true
+    embed-resources: true
+editor: visual
+theme: flatly
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+# Overview
+
+## Purpose
+
+Principal components analysis (PCA) is used to simplify multivariate data into just two dimensions while explaining as much of the variance as possible. In this data set, each data point is one census tract and its associated environmental health variables, as well as its historically assigned redlining grade. Historic redlining was largely based upon racial demographics of different neighborhoods. Since redlining grades were used by mortgage lenders to make home loan and investment decisions, neighborhoods in lower grades systematically received less investments and resources. Therefore, the legacies of redlining may have disproportionately negative impacts on communities of color today.
+
+I am interested in using this analysis to determine whether historical redlining is related to modern-day patterns in urban health inequalities. I will conduct PCA to examine how these health and environmental variables are related to each other, and whether census tracts from distinct redlining categories are dissimilar to each other.
+
+## Data summary
+
+The data used in this analysis describe each census tract in the City of Los Angeles in terms of various health indicators and environmental characteristics. Specifically, I am interested in examining the relationships between PM2.5 pollution, diesel pollution, lead paint exposure, drinking water quality, asthma, education, poverty, unemployment, tree canopy coverage, and heat related illness rates. In addition, where data on historic redlining is available, each census tract is matched to its historic redlining grade (A = Best, B = Still Desirable, C = Definitely Declining, D = Hazardous).
+
+**Data sources:**
+
+-   Census/Health Data: California Office of Environmental Health Hazard Assessment. “CalEnviroScreen 4.0” <https://oehha.ca.gov/calenviroscreen/maps-data/download-data>. February 2024.
+-   Canopy Coverage Data: Loyola Marymount University. “Tree Canopy Coverage”. March 2024.
+-   Modern Redlining Data: diversitydatakids.org. 2023. “Home Owner Loan Corporation (HOLC) neighborhood grades for US census". <https://data.diversitydatakids.org/dataset/holc_census_tracts-home-owner-loan-corporation--holc--neighborhood-grades-for-us-census-tracts?_external=True> on Mar 03 2024, based on HOLC maps digitized by the Digital Scholarship Lab at the University of Richmond.
+-   Heat Risk Data: UCLA Center for Healthy Climate Solutions & UCLA Center for Public Health and Disasters. “UCLA Heat Maps”. <https://sites.google.com/g.ucla.edu/uclaheatmaps/map>. Downloaded February 2024.
+
+## Analytical outline
+
+To conduct this PCA analysis, I used the following process:
+
+1.  Get and tidy data
+
+2.  Examine variable distributions and log variables if needed
+
+3.  Run PCA
+
+4.  Plot results
+
+# Analysis
+
+### Get and tidy data
+
+```{r}
+# Load libraries
+library(tidyverse)
+library(here)
+library(sf)
+library(ggfortify)
+```
+
+```{r}
+# Get data
+enviroscreen <- read_sf(here('posts', '2024-03-16-pca', 'data', 'enviroscreen_final.gpkg'))
+
+# Tidy data: remove geometry column, select only variables of interest, drop NAs
+enviroscreen_clean <- enviroscreen %>% 
+  st_drop_geometry() %>% 
+  select(pm2_5, diesel_pm, lead, drinking_water = drink_wat, asthma, education = educatn, poverty, 
+         unemployment = unempl, canopy_cover = existing_canopy_pct, heat_illness = zip_pct_64, redlining = class1) %>% 
+  drop_na() %>% 
+  mutate(diesel_pm = log(diesel_pm),
+         canopy_cover = log(canopy_cover)) # Log the most skewed variables
+```
+
+### Examine variable distributions
+
+I plotted histograms of each variable in my data to examine their distributions. As a couple were highly skewed (diesel_pm and canopy_cover), I logged those (see code above) to approximate a more normal distribution.
+
+```{r}
+# Pivot only the numeric columns. 
+enviroscreen_long <- enviroscreen_clean %>% 
+  pivot_longer(names_to = 'name', values_to = 'value', where(is.numeric))
+```
+
+```{r fig.width = 10}
+#| label: fig-histogram
+#| fig-cap: Histograms showing the distribution of each of the ten numeric variables in the data. Diesel particulate matter and canopy cover were logged to approximate a more normal distribution.
+
+# Plot
+ggplot(enviroscreen_long, aes(x = value)) +
+  geom_histogram(fill = "deepskyblue3", bins = 25) +
+  facet_wrap(~ name, 
+             scales = 'free',
+             ncol = 5) +
+  theme_minimal() +
+  labs(x = "Value", y = "Count")
+```
+
+### Run PCA
+
+```{r}
+# Run PCA. Scale data so that disparate variables are more comparable
+enviroscreen_pca <- enviroscreen_clean %>% 
+  select(where(is.numeric)) %>% # PCA requires numeric variables
+  prcomp(scale = TRUE)
+```
+
+```{r fig.width = 10, fig.height = 8}
+#| label: fig-pca
+#| fig-cap: PCA biplot for environmental health indicators in the City of Los Angeles. Arrows represent the loading for each variable in the dimensions of PC1 and PC2. Each census tract observation is colored based upon its historical redlining grade.
+
+redlining_colors <- c("A" = "limegreen", "B" = "deepskyblue2", "C" = "orange", "D" = "firebrick1")
+
+autoplot(enviroscreen_pca, # pca results
+     	data = enviroscreen_clean, # raw data
+     	color = "redlining",
+     	loadings = TRUE, # add arrows
+     	loadings.label = TRUE, # label arrows
+     	loadings.colour = "black", # make arrows black
+     	loadings.label.colour = "black", # make text black
+     	loadings.label.vjust = -0.5
+     	) +
+  scale_color_manual(values = redlining_colors) +
+  labs(color = "Redlining Grade") +
+  theme_minimal() 
+```
+
+# Conclusions
+
+Based upon this data and PCA plot, I observed that:
+
+-   Poverty, low educational achievement, and unemployment are all highly positively correlated. This reflects the cyclical effects of poverty, in that education is harder to obtain and stable jobs are harder to keep, perpetuating these conditions.
+
+-   Asthma and heat illness rates are highly positively correlated. Interestingly, asthma rates are not strongly correlated with diesel particulate matter or PM2.5 pollution. Perhaps there are other pollutants or risk factors that are more significant contributors to asthma.
+
+-   The amount of tree canopy cover in a census tract is generally negatively correlated with poverty, low educational achievement, unemployment, and lead paint exposure. Areas in the "A" grade generally had high canopy cover. This is a notable indication that higher canopy coverage seems to be present in more affluent communities, which are more economically stable and have lower health risks.
+
+-   Interestingly, census tracts do not clearly cluster based upon redlining grade, but rather there seems to be a large amount of variation in the tracts in each grade. The one exception seems to be "A" areas, which are generally found within the left half of the plot. The lack of clear clustering indicates there may be other variables worth exploring that more clearly delineate the differences between these areas. Alternatively, modern-day differences between redlining areas "B", "C", and "D" may not be as clear-cut as I had hypothesized. In either case, more detailed analysis and potentially more data would be needed.

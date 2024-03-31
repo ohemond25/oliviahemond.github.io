@@ -7,28 +7,31 @@ about:
   image-shape: round
   image-width: 20em
   links: 
-    - text: LinkedIn
+    - icon: linkedin
+      text: LinkedIn
       href: https://www.linkedin.com/in/olivia-hemond-87992418a/
-    - text: GitHub
+    - icon: github
+      text: GitHub
       href: https://github.com/ohemond25
-    - text: Email
+    - icon: envelope
+      text: Email
       href: mailto:ohemond@ucsb.edu
 ---
 
-## Hello! 
+### Hello!
 
 I am an environmental scientist passionate about finding equitable and actionable solutions for the climate and biodiversity crises.
 
-## Education
+### Professional Interests
 
-**Master in Environmental Science and Management** (Expected 2025) \| Bren School of Environmental Science & Management, UCSB
+Conservation planning \| Climate adaptation & resilience \| Urban and regional planning \| Nature-based solutions
 
-**BS in Molecular Environmental Biology** (2021) \| UC Berkeley
+### Skillsets
 
-## Experience
+Data science \| Data visualization \| Spatial analysis \| GIS \| Communications \| Human-centered design
 
-**Directorate Resource Fellow** (Summer 2024) \| US Fish & Wildlife Service
+### Current Projects
 
-**Arnhold Environmental Graduate Fellow** (2023 - present) \| Environmental Markets Lab (emLab), UCSB
+Climate Adaptation for Forest Management *(link coming soon)*
 
-**Environmental Analyst** (2022 - 2023) \| ERG
+Mapping Urban Heat Risk Inequality in LA *(link coming soon)*

@@ -1,0 +1,15 @@
+[
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/posts/2024-03-17-clustering/index.html",
+      "/posts/2024-03-16-pca/index.html",
+      "/posts/2024-03-02-nls/index.html",
+      "/posts/2024-03-01-blr/index.html",
+      "/posts/2024-02-17-text-analysis/index.html",
+      "/posts/2024-02-16-spatial-data/index.html",
+      "/posts/2024-02-02-time-series/index.html",
+      "/posts/2024-01-30-data-wrangling/index.html"
+    ]
+  }
+]

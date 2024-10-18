@@ -24,11 +24,11 @@ I am an environmental scientist passionate about finding equitable and actionabl
 
 ### Professional Interests
 
-Conservation planning \| Climate adaptation & resilience \| Urban and regional planning \| Green infrastructure & nature-based solutions
+Conservation planning \| Climate adaptation & resilience \| Urban conservation & green infrastructure
 
 ### Skillsets
 
-Data science \| Data visualization \| Spatial analysis \| GIS \| Communications \| Human-centered design
+Data analysis & visualization \| Geospatial analysis \| Communications \| Human-centered design
 
 ### Current Projects
 

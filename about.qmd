@@ -6,9 +6,9 @@ about:
 
 ## About Me
 
-I am a master's student in Environmental Science and Management at the Bren School at UCSB, specializing in Conservation Planning and Strategic Environmental Communications. I'm focusing my degree on climate adaptation, ecological resilience, and data science. For my master's capstone project, my team and I will provide a forest collaborative in Colorado with the information and tools needed to implement adaptive forest management practices. I also hold a B.S. in Molecular Environmental Biology from UC Berkeley, where I studied how global environmental change is impacting organisms, ecosystems, and human well-being. I have professional experience working as a research assistant, a teacher, and an environmental analyst. 
+I am a master's student in Environmental Science and Management at the Bren School at UC Santa Barbara, specializing in Conservation Planning and Strategic Environmental Communications. I'm interested in pairing data science with community engagement to improve conservation outcomes. I hope to use my cross-disciplinary expertise to effectively communicate about conservation science and bridge the gap between research and action. I would love to work on the planning and management of ecologically resilient spaces that provide benefits to local communities.
 
-I hope to use my cross-disciplinary expertise to bridge the gap between science and action. I would love to work on the planning and management of ecologically resilient spaces that provide community and climate adaptation benefits.
+I also hold a B.S. in Molecular Environmental Biology from UC Berkeley, where I studied how global environmental change is impacting organisms, ecosystems, and human well-being. I have professional experience working as a research assistant, a teacher, and an environmental analyst. 
 
 Though I've spent a number of years living in California, and one in Spain, I was raised in Massachusetts and that's where I call home. In my free time, I love exploring the outdoors, trying new restaurants, making art, and traveling.
 
@@ -16,9 +16,11 @@ Though I've spent a number of years living in California, and one in Spain, I wa
 
 ### Experience
 
+**Arnhold Environmental Graduate Fellow** (2023 - present) \| Environmental Markets Lab (emLab), UCSB
+
 **Directorate Resource Fellow** (Summer 2024) \| U.S. Fish & Wildlife Service
 
-**Arnhold Environmental Graduate Fellow** (2023 - present) \| Environmental Markets Lab (emLab), UCSB
+**Graduate Teaching Assistant** (Spring 2024) \| UCSB Environmental Studies Department
 
 **Environmental Analyst** (2022 - 2023) \| ERG
 

@@ -8,12 +8,11 @@ about:
 
 I am a master's student in Environmental Science and Management at the Bren School at UC Santa Barbara, specializing in Conservation Planning and Strategic Environmental Communications. I'm interested in pairing data science with community engagement to improve conservation outcomes. I would love to work on the creation and management of ecologically resilient spaces that provide benefits to local communities.
 
-I also hold a B.S. in Molecular Environmental Biology from UC Berkeley, where I studied how global environmental change is impacting organisms, ecosystems, and human well-being. I have professional experience working as a research assistant, a teacher, and an environmental analyst. 
+I also hold a B.S. in Molecular Environmental Biology from UC Berkeley, where I studied how global environmental change is impacting organisms, ecosystems, and human well-being. I have professional experience working as a research assistant, a teacher, and an environmental analyst.
 
 Though I've spent a number of years living in California, and one in Spain, I was raised in Massachusetts and that's where I call home. In my free time, I love exploring the outdoors, trying new restaurants, making art, and traveling.
 
 ::: panel-tabset
-
 ### Experience
 
 **Arnhold Environmental Graduate Fellow** (2023 - present) \| Environmental Markets Lab (emLab), UCSB
@@ -40,4 +39,19 @@ Emerging Researchers National Conference in STEM, February 2020, Washington D.C.
 
 SEA Fellows Summer Science Symposium, August 2019, Walpole ME *(presenter)*
 
+### Photos
+
+::: {layout-ncol="2"}
+![*Me with other Bren students at the National Adaptation Forum, 2024*](naf.jpg)
+
+![*USFWS National Conservation Training Center*](nctc.jpg)
+
+![*The Bren School at sunset. Photo credit: Joan Dudney*](bren.JPG)
+
+![*Me with my forest sustainability class*](forest_class.JPG)
+
+![*First day of graduate school*](first_day.jpg) 
+
+![*Monarch butterflies overwintering in Goleta, CA. Photo credit: Joan Dudney*](monarchs.JPG)
+:::
 :::

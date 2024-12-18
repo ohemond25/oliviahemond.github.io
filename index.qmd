@@ -24,14 +24,20 @@ I am an environmental scientist passionate about finding equitable and actionabl
 
 ### Professional Interests
 
-Conservation planning \| Climate adaptation & resilience \| Urban conservation & green infrastructure
+Conservation planning \| Climate adaptation & resilience \| Urban sustainability \| Green infrastructure & nature-based solutions
 
 ### Skillsets
 
 Data analysis & visualization \| Geospatial analysis \| Communications \| Human-centered design
 
-### Current Projects
+### Recent & Ongoing Projects
 
 [Climate Adaptation for Forest Management](https://bren.ucsb.edu/projects/integrating-climate-adaptation-strategies-local-collaborative-forest-management-northern)
+
+[Enhancing Urban Pollinator Habitat Connectivity](files/urban_pollinators.pdf)
+
+[Valuation of Coastal Wetland Restoration](files/wetland_valuation.pdf)
+
+[Urban Watershed Management Plan](files/watershed_management_plan.pdf)
 
 [Mapping Urban Heat Risk Inequality in LA](https://plantsmith.shinyapps.io/heat_risk_inequality/)

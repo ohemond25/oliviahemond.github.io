@@ -12,8 +12,6 @@ website:
         text: About
       - href: projects.qmd
         text: Portfolio
-      - href: Resume.pdf
-        text: Resume
 
 
 format:

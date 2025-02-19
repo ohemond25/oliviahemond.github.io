@@ -20,11 +20,11 @@ about:
 
 ### Hello!
 
-I am an environmental scientist passionate about finding equitable and actionable solutions for the climate and biodiversity crises.
+I am an environmental scientist passionate about advancing nature-based solutions for ecological and societal resilience. 
 
 ### Professional Interests
 
-Conservation planning \| Climate adaptation & resilience \| Urban sustainability \| Green infrastructure & nature-based solutions
+Conservation planning & policy \| Climate adaptation & resilience \| Urban sustainability \| Green infrastructure 
 
 ### Skillsets
 
@@ -34,9 +34,9 @@ Data analysis & visualization \| Geospatial analysis \| Communications \| Human-
 
 [Climate Adaptation for Forest Management](https://bren.ucsb.edu/projects/integrating-climate-adaptation-strategies-local-collaborative-forest-management-northern)
 
-[Enhancing Urban Pollinator Habitat Connectivity](files/urban_pollinators.pdf)
-
 [Valuation of Coastal Wetland Restoration](files/wetland_valuation.pdf)
+
+[Enhancing Urban Pollinator Habitat Connectivity](files/urban_pollinators.pdf)
 
 [Urban Watershed Management Plan](files/watershed_management_plan.pdf)
 

@@ -42,7 +42,7 @@ View from my car window of the KNP Complex burn scar in 2024. Photos are my own.
 
 ## What Can We Do?
 
-Forest restoration describes a set of practices that seek to return a forest to a healthier, more resilient state. This involves removing excess trees and vegetation that are making the forest overcrowded and stressed. Just like how weeding a garden helps give plants the space and resources they need to thrive, forest restoration aims to "open up" the forest floor and promote healthy growth. 
+Forest restoration describes a set of practices that seek to return a forest to a healthier, more resilient state. This involves removing excess trees and vegetation that are making the forest overcrowded and stressed. Just like how weeding a garden helps give plants the space and resources they need to thrive, forest restoration aims to "open up" the forest floor and promote healthy growth.
 
 With this in mind, those in charge of managing a forest may choose from a few different options:
 
@@ -52,32 +52,31 @@ With this in mind, those in charge of managing a forest may choose from a few di
 
 3.  **Combining prescribed fire and mechanical thinning**. Mechanically thin the forest first, and then conduct a prescribed burn.
 
-In this project, I essentially wanted to answer the questions: 
+For this project, I sought to answer the questions:
 
-*How well do these different forest restoration treatments actually work? Can they reduce overcrowding in our forests, decrease the likelihood of severe wildfire, AND protect the carbon that forests naturally sequester?* 
+*How well do these different forest restoration treatments actually work? Can they reduce overcrowding in our forests, decrease the likelihood of severe wildfire, AND protect the carbon that forests naturally sequester?*
 
 Any restoration practice that could achieve all three of these goals would be extremely valuable for future forest restoration efforts.
 
-### About the Data 
+### About the Data
 
-To explore these questions further, I used data that was collected and made available by a team of researchers from UC Berkeley (go Bears!). In their paper, *[Forest restoration and fuels reduction work: Different pathways for achieving success in the Sierra Nevada](https://doi.org/10.1002/eap.2932)*, Dr Scott Stephens and his team show how all three of these forest restoration practices can be successful over the long term. 
+To explore these questions further, I used data that were collected and made available by a team of researchers from UC Berkeley (go Bears!). In their paper, [*Forest restoration and fuels reduction work: Different pathways for achieving success in the Sierra Nevada*](https://doi.org/10.1002/eap.2932), Dr Scott Stephens and his team show how all three of these forest restoration practices can be successful over the long term.
 
 This paper presented the results of a long-term ecological research study on the impacts of different fuels treatment and forest restoration strategies in the Sierra Nevada. Plots in an experimental forest were randomly assigned to one of four different treatment options: prescribed fire, mechanical thinning, combined fire and mechanical thinning, and no treatment (control). Data collection occurred over a period of 18 years. The scientists measured vegetation characteristics, fuel amounts, and tree stand densities. They also conducted fire modeling to calculate the probability of torching (essentially, fire so severe that it scorches even the tops of trees) and the probability of tree mortality in each plot. Alongside this information, the data contains variables describing the treatment used, the plot ID number, the year, and whether the data were collected pre- or post-treatment.
 
-As an ecologist and environmental scientist, I loved reading this paper. But for those who are less inclined to pore over academic writing, never fear! I translated their results into the infographic below to highlight the main findings that I found exciting. 
+As an ecologist and environmental scientist, I loved reading this paper. But for those who are less inclined to pore over academic writing, never fear! I translated their results into the infographic below to highlight the main findings that I found exciting.
 
 ## Data Visualization as Science Communication
 
 ### Final Infographic
 
-
-[![Infographic showing the benefits and relative strengths of different forest restoration practices. Click on the image to zoom in and explore!](infographic.jpg){fig-align="center" width="8.5in"}](infographic.pdf)
+![Infographic showing the benefits and relative strengths of different forest restoration practices. ](infographic.jpg){fig-align="center" width="8.5in"}
 
 This infographic is made up of three individual plots that I created in R, then stitched together using Affinity Designer. Next, I'll walk you through the steps I took to put this infographic together.
 
 ### Set Up
 
-Here I load the libraries I need, set up my color palette, load in custom fonts, and load in my data. Throughout this blog post, you can click to expand the code chunks for each individual step as you'd like. 
+Here I load the libraries I need, set up my color palette, load in custom fonts, and load in my data. Throughout this blog post, you can click to expand the code chunks for each individual step as you'd like.
 
 ```{r}
 # ..........load libraries.........
@@ -157,11 +156,11 @@ stlc_clean <- stlc_data %>%
 
 ### Forest Density Lollipop Chart
 
-My first figure answers the question: 
+My first figure answers the question:
 
 *Which restoration practices are best at reducing forest density?* Reducing tree densities helps protect a forest against the impacts of drought, pests, and disease.
 
-I created a lollipop chart showing the proportion of the forest that was considered "extremely high density" within each restoration practice. It is then possible to compare the amount of high density forest that results from each restoration option. 
+I created a lollipop chart showing the proportion of the forest that was considered "extremely high density" within each restoration practice. It is then possible to compare the amount of high density forest that results from each restoration option.
 
 ```{r}
 #| fig-width: 9
@@ -252,11 +251,11 @@ density_plot
 
 ### Wildfire Ridgeline Plot
 
-My second figure answers the question: 
+My second figure answers the question:
 
 *Which restoration practices are best at reducing the risk of severe fire?*
 
-I created a ridgeline plot to visualize the distribution of `ptorch` values for each restoration practices. Remember that the probability of torching essentially represents the probability of that forest experiencing a severe wildfire (if a fire were to burn, would it be severe?). The median values are marked by vertical lines within the ridges, and the individual points, representing individual forest plots, are shown in a "raincloud" formation below each ridge. 
+I created a ridgeline plot to visualize the distribution of `ptorch` values for each restoration practices. Remember that the probability of torching essentially represents the probability of that forest experiencing a severe wildfire (if a fire were to burn, would it be severe?). The median values are marked by vertical lines within the ridges, and the individual points, representing individual forest plots, are shown in a "raincloud" formation below each ridge.
 
 ```{r}
 #| fig-width: 10
@@ -333,7 +332,7 @@ fire_plot
 
 ### Forest Carbon Slope Chart
 
-My third and final figure answers the question: 
+My third and final figure answers the question:
 
 *Which restoration practices are best at protecting forest carbon stocks?*
 
@@ -447,19 +446,18 @@ To create the final infographic, I saved each plot I made and combined them usin
 
 It is essential to explicitly consider different design elements when creating an infographic. I wanted my visualizations to tie in to each other and tell a clear story. So, I wanted to explain my thinking and the rationale behind my choices for each of the ten essential design elements listed below. If you are planning to create your own infographic, make sure you keep these in mind!
 
-::: {.panel-tabset}
-
-## Graphic Form 
+::: panel-tabset
+## Graphic Form
 
 **Graphic Form:** I used three different graphic forms for my plots: a lollipop chart, a ridgeline plot, and a slope chart. I wanted to use a variety of charts, and pick some that were slightly out of the ordinary, but still keep them simple and effective. I felt like the lollipop chart was essentially a fun spin on a bar chart, and would be very easy to read and understand the message of. The slope chart idea came to me after I first played around with some dumbbell plots but didn't quite like the look of them. I like how the slope chart shows the "change in time", in a way, on the x axis, and the "change in amount" on the y axis. After making those two charts, I knew I wanted my wildfire chart to have minimal straight lines so that it would be visually different from the other two. I tried boxplot and violin charts before finally settling on the ridgeline design. I liked that I could still show the median value, and the density of the data in two ways (through the ridgeline and the raincloud of points below).
 
-## Text 
+## Text
 
-**Text:** In each of my stand alone plots, I included a title, subtitle, caption, and axis text and labels where appropriate. I removed any legends and axis text that I could in order to simplify the design. When I combined the plots together in the infographic, I further moved and removed text wherever possible. For instance, I changed all of the subtitles to be annotations on the plots, and I removed the restoration practices axis text and replaced them with the corresponding icons. I also removed the individual data credit captions, and replaced them with one single caption at the bottom right of the infographic. I did this to reduce the reading burden on a viewer, and to make sure the text I did need to include would be that much more attention grabbing. I also added small diagrams and additional text boxes to describe aspects of forest ecology that were essential to a viewer's understanding of the concepts captured by the data. 
+**Text:** In each of my stand alone plots, I included a title, subtitle, caption, and axis text and labels where appropriate. I removed any legends and axis text that I could in order to simplify the design. When I combined the plots together in the infographic, I further moved and removed text wherever possible. For instance, I changed all of the subtitles to be annotations on the plots, and I removed the restoration practices axis text and replaced them with the corresponding icons. I also removed the individual data credit captions, and replaced them with one single caption at the bottom right of the infographic. I did this to reduce the reading burden on a viewer, and to make sure the text I did need to include would be that much more attention grabbing. I also added small diagrams and additional text boxes to describe aspects of forest ecology that were essential to a viewer's understanding of the concepts captured by the data.
 
-## Themes 
+## Themes
 
-**Themes:** I chose to keep plot themes simple and minimal as much as possible. This included removing legends and axis text, as mentioned above, as well as axis lines and background grids. I found that most of these elements were not necessary to convey meaning, and could often be replaced by just adding numerical labels onto the plot itself. Similarly, I wanted the overall theme of the infographic to be simple, neutral and earthy. I used a very light shade of brown for the background, slightly darker shades of brown to highlight some regions of text, and kept additional forest graphics as black silhouettes. 
+**Themes:** I chose to keep plot themes simple and minimal as much as possible. This included removing legends and axis text, as mentioned above, as well as axis lines and background grids. I found that most of these elements were not necessary to convey meaning, and could often be replaced by just adding numerical labels onto the plot itself. Similarly, I wanted the overall theme of the infographic to be simple, neutral and earthy. I used a very light shade of brown for the background, slightly darker shades of brown to highlight some regions of text, and kept additional forest graphics as black silhouettes.
 
 ## Colors
 
@@ -467,7 +465,7 @@ It is essential to explicitly consider different design elements when creating a
 
 ## Typography
 
-**Typography:** I chose to use two fonts throughout my infographic. *Montserrat* I used for the main title and the title of each plot. All other text was displayed using *Work Sans*. These fonts are both sans serif, which aids their readability on a screen. I also chose them because they were simple, calm, and composed. Beyond these fonts, I also chose to use italics and bolding to emphasize or de-emphasize certain text. For instance, I italicized the author and data attributions at the bottom of the infographic so that they would not be overly eye-catching. I used bolding in some of my annotations, along with color, to draw attention to the specific restoration practice that I was talking about. 
+**Typography:** I chose to use two fonts throughout my infographic. *Montserrat* I used for the main title and the title of each plot. All other text was displayed using *Work Sans*. These fonts are both sans serif, which aids their readability on a screen. I also chose them because they were simple, calm, and composed. Beyond these fonts, I also chose to use italics and bolding to emphasize or de-emphasize certain text. For instance, I italicized the author and data attributions at the bottom of the infographic so that they would not be overly eye-catching. I used bolding in some of my annotations, along with color, to draw attention to the specific restoration practice that I was talking about.
 
 ## General Design
 
@@ -475,20 +473,19 @@ It is essential to explicitly consider different design elements when creating a
 
 ## Data Context
 
-**Contextualizing Data:** I contextualized the data in both the header, the forestry graphics, and the plot annotations. I spent a lot of time throughout this project figuring out how to simplify these forest ecology concepts and remove jargon so that it would be understandable to a broader audience. Some words, such as "forest density" and "carbon" were just too essential to the story to be removed, so these I clarified through the use of my drawings and text blurbs. I also used the annotations on the plots themselves to pull out the main points for the viewer.  
+**Contextualizing Data:** I contextualized the data in both the header, the forestry graphics, and the plot annotations. I spent a lot of time throughout this project figuring out how to simplify these forest ecology concepts and remove jargon so that it would be understandable to a broader audience. Some words, such as "forest density" and "carbon" were just too essential to the story to be removed, so these I clarified through the use of my drawings and text blurbs. I also used the annotations on the plots themselves to pull out the main points for the viewer.
 
 ## Message
 
-**Centering Primary Message:** My primary message was that *any* of these restoration practices would produce significantly better outcomes than taking no action. Yes, there was also some nuance and tradeoffs between the different practices, some of which I pointed out. But in general, I wanted a viewer to understand that restoration **is necessary** and that this is why: it helps decrease forest densities, it helps reduce severe wildfires, and it helps store more stable carbon. To make this point clear, I made sure that the title of each plot captured that takeaway, in short and concise wording. I also made an annotation on each plot describing how poorly the "no restoration" option performed. I did all of this in combination with simply framing the message with my title, which highlights the "benefits of forest restoration". 
+**Centering Primary Message:** My primary message was that *any* of these restoration practices would produce significantly better outcomes than taking no action. Yes, there was also some nuance and tradeoffs between the different practices, some of which I pointed out. But in general, I wanted a viewer to understand that restoration **is necessary** and that this is why: it helps decrease forest densities, it helps reduce severe wildfires, and it helps store more stable carbon. To make this point clear, I made sure that the title of each plot captured that takeaway, in short and concise wording. I also made an annotation on each plot describing how poorly the "no restoration" option performed. I did all of this in combination with simply framing the message with my title, which highlights the "benefits of forest restoration".
 
 ## Accessibility
 
-**Considering Accessibility:** As mentioned above, I wanted to use colors from the `conifer` palette to represent the conifer forests of the Sierra Nevada. The colors I chose are distinguishable to those with "normal" color vision but harder to tell apart for those with color blindness. This is because they fall within the orange, green, and brown parts of the spectrum, which are less easily distinguished by people with red-green color blindness. To balance the use of these colors with accessibility concerns, I made sure my labeling was redundant of my color choices. I did this by including the icons describing each restoration practice on all three of my plots, in conjunction with the colors. That way, even someone who perceives the colors differently from myself can identify the practices based on the unique icons and the key for each that I included in the heading. 
+**Considering Accessibility:** As mentioned above, I wanted to use colors from the `conifer` palette to represent the conifer forests of the Sierra Nevada. The colors I chose are distinguishable to those with "normal" color vision but harder to tell apart for those with color blindness. This is because they fall within the orange, green, and brown parts of the spectrum, which are less easily distinguished by people with red-green color blindness. To balance the use of these colors with accessibility concerns, I made sure my labeling was redundant of my color choices. I did this by including the icons describing each restoration practice on all three of my plots, in conjunction with the colors. That way, even someone who perceives the colors differently from myself can identify the practices based on the unique icons and the key for each that I included in the heading.
 
 ## DEI
 
 **Diversity, Equity, and Inclusion (DEI):** DEI is essential to consider for any data that depicts people, places, and communities. However, I did not end up incorporating a DEI lens into this piece of work because of the nature of my data. This data solely described physical characteristics of forests, and did not address any aspect of the people who may be nearby or involved in their management. Thus, there was not a DEI context to consider in this instance, but I would urge you to always consider whether DEI needs to be included in your own visualizations!
-
 :::
 
 ## Data Citation

@@ -1,0 +1,51 @@
+---
+title: "Integrating Climate Change Adaptation into Collaborative Forest Management"
+description: "Developing resources and an interactive workflow to facilitate climate adaptive forest management in Colorado"
+author: "Olivia Hemond, Izzy Sofio, Steven Mitchell, Maxwell Pepperdine, and Nicole Rosen"
+date: 04-25-2025
+image: colorado.jpg
+citation: 
+  url: https://ohemond25.github.io/oliviahemond.github.io/posts/2025-04-25-gp 
+draft: false
+categories: [Strategic Communications, Conservation Planning]
+format: 
+  html: 
+    code-fold: true 
+    embed-resources: true
+editor: visual
+execute: 
+  eval: true
+  echo: true 
+  message: false 
+  warning: false
+---
+
+## Introduction
+
+This work served as my Master's Group Project for completion of my degree at the Bren School of Environmental Science & Management. It was conducted from the beginning of April of 2024 through the end of April 2025.
+
+The team consisted of myself and my colleagues Izzy Sofio, Steven Mitchell, Maxwell Pepperdine, and Nicole Rosen. Our advisor was Dr. Joan Dudney and our client was Rob Addington with The Nature Conservancy in Colorado. We also worked closely with members of the Upper South Platte Partnership, a collaborative group of land and forest managers who work along the Northern Front Range of the Colorado Rockies.
+
+![Fall foliage in the mountains of Colorado](colorado.jpg){fig-align="center"}
+
+## Background
+
+Climate change is altering western dry forests, including the forests of the Upper South Platte Watershed in Colorado, underscoring the need for climate adaptation. There are numerous resources available to land and forest managers designed to support climate adaptation efforts. In fact, the sheer number of available tools makes it challenging to determine which are most useful. This project synthesized resources most critical to climate adaptation into a streamlined climate adaptation workflow for use by land and forest managers working in the Upper South Platte Watershed. Alongside actions for ecological adaptation, the workflow includes recommendations for incorporating equity and environmental justice into forest adaptation. Additionally, we assessed the current state of climate adaptation in forest management and barriers to improved implementation through structured interviews with representatives from the Upper South Platte Partnership.
+
+Check out the final report and additional information about the project [here](https://bren.ucsb.edu/projects/integrating-climate-adaptation-strategies-local-collaborative-forest-management-northern).
+
+A video of our final presentation can be found [here](https://www.youtube.com/watch?v=wtjMPZB60Nc) (skip to 2:59:00).
+
+## Executive Summary
+
+I designed the following two-page executive summary for the project. It communicates our work's importance and impact in brief and accessible language. I used Affinity Designer and Google Slides to create the final design.
+
+![Page 1](summary_1.png){fig-align="center"}
+
+![Page 2](summary_2.png){fig-align="center"}
+
+## My Contributions
+
+As a co-Data Manager, I worked alongside Max to analyze the 15 interviews with members of the Upper South Platte Partnership. I conducted this analysis using NVivo software and a descriptive coding process. I synthesized this information to identify successful climate adaptation strategies and characterized the main barriers to further adaptation. I also created figures, presentation materials, and written summaries of these findings.
+
+Outside of my role as Data Manager, I contributed to the reviews of decision-support tools and NIACS climate adaptation menus, and aided Nicole in the creation of our Climate Adaptation Workflow. I also supported the team by editing the content and format of our final report, final presentation, faculty review presentation, and executive summary.

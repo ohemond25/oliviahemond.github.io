@@ -5,7 +5,7 @@ toc: false
 about:
   template: trestles
   image-shape: round
-  image-width: 20em
+  image-width: 22em
   links: 
     - icon: linkedin
       text: LinkedIn
@@ -15,27 +15,17 @@ about:
       href: https://github.com/ohemond25
     - icon: envelope
       text: Email
-      href: mailto:ohemond@ucsb.edu
+      href: mailto:oahemond@gmail.com
 ---
 
 ### Hello!
 
-I am an environmental scientist passionate about advancing nature-based solutions for climate resilience. I am a practical and analytical problem-solver, and believe strongly in the importance of cross-disciplinary collaboration.
+I am an environmental scientist passionate about advancing nature-based solutions for climate resilience. My interests span urban ecology, forest management, and climate adaptation.
 
-My interests span urban ecology, forest and land management, and climate adaptation.
+I am a practical and analytical problem-solver, and believe strongly in the importance of cross-disciplinary collaboration.
 
 ### Highlighted Skills
 
 Data Science & GIS \| Conservation Planning \| Strategic Communications
 
-### Explore My Recent & Ongoing Projects
-
-[Climate Adaptation for Forest Management](https://bren.ucsb.edu/projects/integrating-climate-adaptation-strategies-local-collaborative-forest-management-northern)
-
-[Valuation of Coastal Wetland Restoration](files/wetland_valuation.pdf)
-
-[Enhancing Urban Pollinator Habitat Connectivity](files/urban_pollinators.pdf)
-
-[Urban Watershed Management Plan](files/watershed_management_plan.pdf)
-
-[Mapping Urban Heat Risk Inequality in LA](https://plantsmith.shinyapps.io/heat_risk_inequality/)
+#### <i class="fa-solid fa-seedling" style="color: #6aac96;"></i> [Explore My Portfolio of Recent Projects](https://ohemond25.github.io/oliviahemond.github.io/projects.html)

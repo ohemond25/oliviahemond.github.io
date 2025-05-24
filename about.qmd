@@ -4,9 +4,9 @@ about:
   template: solana
 ---
 
-## About Me
+# About Me <i class="fa-solid fa-seedling" style="color: #6aac96;"></i>
 
-I graduated from the Bren School at UC Santa Barbara with a Master of Environmental Science and Management. At Bren, I specialized in Conservation Planning and Strategic Environmental Communications, combining my love of environmental science with the ability to translate its meaning to diverse audiences.
+I graduated from the Bren School at UC Santa Barbara with a Master of Environmental Science and Management. At Bren, I specialized in Conservation Planning and Strategic Environmental Communications, combining my love of environmental science with the ability to share it with diverse audiences.
 
 I also hold a B.S. in Molecular Environmental Biology from UC Berkeley, where I studied how global environmental change is impacting organisms, ecosystems, and human well-being. I have professional experience working as a research assistant, a teacher, and an environmental analyst.
 
@@ -15,19 +15,31 @@ Though I've spent a number of years living in California, and one in Spain, I wa
 :::: panel-tabset
 ### Experience
 
+**Environmental Scientist** (7/25 - present) \| Weston & Sampson
+
 **Arnhold Environmental Graduate Fellow** (10/23 - 7/25) \| Conservation International & UC Santa Barbara
 
 **Directorate Resource Fellow** (6/24 - 9/24) \| U.S. Fish & Wildlife Service
 
-**Graduate Teaching Assistant** (4/24 - 6/24 & ) \| UC Santa Barbara Environmental Studies Department
+**Graduate Teaching Assistant** (4/24 - 6/24 & 4/25 - 6/25) \| UC Santa Barbara Environmental Studies Department
 
-**Environmental Analyst** (7/22 - 8/23) \| ERG
+**Environmental Analyst** (7/22 - 8/23) \| Eastern Research Group, Inc. (ERG)
+
+**English Language Assistant and Cultural Ambassador** (9/21 - 6/22) \| Madrid, Spain
 
 ### Education
 
-**Master in Environmental Science and Management** (2025) \| Bren School of Environmental Science & Management, UC Santa Barbara
+**Master of Environmental Science and Management** (2025)
 
-**BS in Molecular Environmental Biology** (2021) \| Rausser College of Natural Resources, UC Berkeley
+*Conservation Planning and Strategic Environmental Communications*
+
+Bren School of Environmental Science & Management, UC Santa Barbara
+
+**BS in Molecular Environmental Biology** (2021)
+
+*Environment & Human Health*
+
+Rausser College of Natural Resources, UC Berkeley
 
 ### Conferences
 

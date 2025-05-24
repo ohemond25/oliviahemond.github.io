@@ -1,11 +1,11 @@
 ---
-title: "Conservation Prioritization"
+title: "Raptors are Effective Umbrella Species for Conservation Prioritization"
 description: "Assessing the potential for raptors as umbrella species for reserve network design in Morro Bay"
 author: "Olivia Hemond & Madi Calbert"
 date: 09-22-2024
-image: morro_bay.jpg
+image: osprey.jpg
 draft: false
-categories: [GIS, Conservation, Network Design]
+categories: [Conservation Planning]
 format: 
   html: 
     code-fold: true 

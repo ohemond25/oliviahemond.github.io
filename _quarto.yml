@@ -17,7 +17,7 @@ website:
 format:
   html:
     theme:
-      - litera
+      - yeti
       - styles.scss
     css: styles.css
     toc: true

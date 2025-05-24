@@ -1,11 +1,11 @@
 ---
-title: "Spatial Data Analysis"
+title: "Los Angeles and San Diego Counties are at Greatest Risk for Oil Spills"
 description: "Analyzing the spatial distribution of inland oil spills in California"
 author: "Olivia Hemond"
 date: 02-16-2024
-image: fig2.png
+image: oilspill.jpg
 draft: false
-categories: [R, Spatial, Visualization]
+categories: [Data Science]
 format: 
   html:
     code-fold: show
@@ -13,7 +13,6 @@ format:
     number-sections: false
     embed-resources: true
 editor: visual
-theme: flatly
 execute:
   echo: true
   message: false

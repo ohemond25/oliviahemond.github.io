@@ -1,11 +1,11 @@
 ---
-title: "Invasive Species"
-description: "Identifying forest restoration areas threatened by the spread of kudzu (Pueraria montana) under climate change"
+title: "Kudzu Invasions May Expand Northwards"
+description: "Identifying forested areas that may be threatened by the spread of kudzu under climate change"
 author: "Olivia Hemond & Thuy-Tien Bui"
 date: 09-24-2024
-image: kudzu_1.png
+image: kudzu_pic.jpg
 draft: false
-categories: [GIS, Conservation, Climate, Modeling]
+categories: [Conservation Planning]
 format: 
   html: 
     code-fold: true 
@@ -47,28 +47,17 @@ Kudzu: The Invasive Vine that Ate the South. (2019, August 9). *The Nature Conse
 
 **Table 1. Bioclimatic Variable Codes Used in Modeled Suitability Projection**
 
-+----------+-------------------------------------+
+|          |                                     |
+|----------|-------------------------------------|
 | **Code** | **Bioclimatic Variable**            |
-+----------+-------------------------------------+
 | BIO1     | Annual Mean Temperature             |
-+----------+-------------------------------------+
 | BIO5     | Max Temperature of Warmest Month    |
-+----------+-------------------------------------+
 | BIO6     | Min Temperature of Warmest Month    |
-+----------+-------------------------------------+
 | BIO9     | Mean Temperature of Coldest Quarter |
-+----------+-------------------------------------+
 | BIO10    | Mean Temperature of Warmest Quarter |
-+----------+-------------------------------------+
 | BIO12    | Annual Precipitation                |
-+----------+-------------------------------------+
 | BIO13    | Precipitation of Wettest Month      |
-+----------+-------------------------------------+
 | BIO15    | Precipitation Seasonality           |
-+----------+-------------------------------------+
 | BIO16    | Precipitation of Wettest Quarter    |
-+----------+-------------------------------------+
 | BIO18    | Precipitation of Warmest Quarter    |
-+----------+-------------------------------------+
 | BIO19    | Precipitation of Coldest Quarter    |
-+----------+-------------------------------------+

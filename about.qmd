@@ -6,30 +6,32 @@ about:
 
 ## About Me
 
-I am a master's student in Environmental Science and Management at the Bren School at UC Santa Barbara, specializing in Conservation Planning and Strategic Environmental Communication. I'm interested in using data science, GIS and effective science communication to improve conservation outcomes. I would love to work on protecting forests, wetlands, and urban ecosystems and the essential services they provide.
+I graduated from the Bren School at UC Santa Barbara with a Master of Environmental Science and Management. At Bren, I specialized in Conservation Planning and Strategic Environmental Communications, combining my love of environmental science with the ability to translate its meaning to diverse audiences.
 
 I also hold a B.S. in Molecular Environmental Biology from UC Berkeley, where I studied how global environmental change is impacting organisms, ecosystems, and human well-being. I have professional experience working as a research assistant, a teacher, and an environmental analyst.
 
-Though I've spent a number of years living in California, and one in Spain, I was raised in Massachusetts and that's where I call home. In my free time, I love exploring the outdoors, trying new restaurants, making art, and traveling.
+Though I've spent a number of years living in California, and one in Spain, I was raised in Massachusetts and that's where I call home. In my free time, I love exploring the outdoors, trying new restaurants, running, and traveling.
 
-::: panel-tabset
+:::: panel-tabset
 ### Experience
 
-**Arnhold Environmental Graduate Fellow** (2023 - present) \| Environmental Markets Lab (emLab), UCSB
+**Arnhold Environmental Graduate Fellow** (10/23 - 7/25) \| Conservation International & UC Santa Barbara
 
-**Directorate Resource Fellow** (Summer 2024) \| U.S. Fish & Wildlife Service
+**Directorate Resource Fellow** (6/24 - 9/24) \| U.S. Fish & Wildlife Service
 
-**Graduate Teaching Assistant** (Spring 2024) \| UCSB Environmental Studies Department
+**Graduate Teaching Assistant** (4/24 - 6/24 & ) \| UC Santa Barbara Environmental Studies Department
 
-**Environmental Analyst** (2022 - 2023) \| ERG
+**Environmental Analyst** (7/22 - 8/23) \| ERG
 
 ### Education
 
-**Master in Environmental Science and Management** (Expected 2025) \| Bren School of Environmental Science & Management, UC Santa Barbara
+**Master in Environmental Science and Management** (2025) \| Bren School of Environmental Science & Management, UC Santa Barbara
 
-**BS in Molecular Environmental Biology** (2021) \| UC Berkeley
+**BS in Molecular Environmental Biology** (2021) \| Rausser College of Natural Resources, UC Berkeley
 
 ### Conferences
+
+Nature-Based Coastal Resilience in Urban Settings, April 2025, Boston MA *(attendee)*
 
 National Adaptation Forum, May 2024, St. Paul MN *(attendee)*
 
@@ -50,8 +52,8 @@ SEA Fellows Summer Science Symposium, August 2019, Walpole ME *(presenter)*
 
 ![*Me with my forest sustainability class*](forest_class.JPG)
 
-![*First day of graduate school*](first_day.jpg) 
+![*First day of graduate school*](first_day.jpg)
 
 ![*Monarch butterflies overwintering in Goleta, CA. Photo credit: Joan Dudney*](monarchs.JPG)
 :::
-:::
+::::

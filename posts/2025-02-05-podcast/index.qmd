@@ -1,0 +1,30 @@
+---
+title: "Air Pollution Disproportionately Affects Vulnerable Communities"
+description: "A podcast episode exploring the environmental justice implications of air pollution in the United States"
+author: "Olivia Hemond & Natalie Smith"
+date: 02-05-2025
+image: smog.jpg
+citation: 
+  url: https://ohemond25.github.io/oliviahemond.github.io/posts/2025-02-05-podcast 
+draft: false
+categories: [Strategic Communications]
+format: 
+  html: 
+    code-fold: true 
+    embed-resources: true
+editor: visual
+execute: 
+  echo: true 
+  message: false 
+  warning: false
+---
+
+[![Smokestacks. Photo by Janusz Walczak on Unsplash.](smog.jpg){fig-align="center" width="10in"}](https://unsplash.com/@jwvein?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+
+This podcast episode was developed by myself and my colleague Natalie Smith using the software tool Descript. We wanted to discuss a recent scientific publication by Dr. Jay Chakraborty, which focused on the spatial and social determinants of air pollution exposure in the United States. We created a short, conversational podcast episode to help this important research reach a broader audience.
+
+{{< audio file="podcast_final.mp3" caption="Urban Biome Podcast Episode (Recorded Feb 5, 2025)">}}
+
+**Original Publication:**
+
+Chakraborty, J. (2024). Using local Indicators of spatial association to analyze the environmental justice implications of ambient air pollution in the United States. *Environmental Justice*. <https://doi.org/10.1089/env.2023.0017>

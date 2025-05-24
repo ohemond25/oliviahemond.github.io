@@ -1,18 +1,17 @@
 ---
-title: "Non-Linear Least Squares"
+title: "Water and Fertilizer Inputs are Key Determinants of Crop Yields"
 description: "Describing and predicting crop yields using fitted non-linear least squares models"
 author: "Olivia Hemond"
 date: 03-02-2024
-image: fig2.png
+image: sorghum.jpg
 draft: false
-categories: [R, Visualization, Modeling]
+categories: [Data Science]
 format: 
   html:
     code-fold: show
     toc: true
     embed-resources: true
 editor: visual
-theme: pulse
 execute: 
   echo: true
   message: false

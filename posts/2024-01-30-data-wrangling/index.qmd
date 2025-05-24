@@ -1,11 +1,11 @@
 ---
-title: "Data Wrangling and Visualization"
-description: "Investigating mountain yellow-legged frog abundance"
+title: "Endangered Mountain Yellow-Legged Frog Population Increased in 2002"
+description: "Investigating changes in frog abundance and sightings over time"
 author: "Olivia Hemond"
 date: 01-30-2024
 image: frog.jpeg
 draft: false
-categories: [R, Visualization]
+categories: [Data Science]
 format: 
   html:
     code-fold: true

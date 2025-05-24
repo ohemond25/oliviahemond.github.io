@@ -1,11 +1,11 @@
 ---
-title: "Species Distribution Modeling"
-description: "Visualizing changes in habitat suitability for African lions (Panthera leo) under different climate change scenarios"
+title: "Suitable Lion Habitat May Shift with Climate Change"
+description: "Visualizing changes in habitat suitability for African lions under different climate change scenarios"
 author: "Olivia Hemond & Sam Lance"
 date: 09-20-2024
-image: maps.jpg
+image: lions.jpg
 draft: false
-categories: [GIS, Conservation, Climate, Modeling]
+categories: [Conservation Planning]
 format: 
   html: 
     code-fold: true 

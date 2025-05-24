@@ -1,11 +1,11 @@
 ---
-title: "Habitat Connectivity"
+title: "Jaguar Habitat Connectivity is Threatened by Anthropogenic Land Uses"
 description: "Mapping habitat connectivity and potential jaguar movement pathways in Costa Rica"
 author: "Olivia Hemond & Madi Calbert"
 date: 09-23-2024
-image: lcps.jpg
+image: jaguar.jpg
 draft: false
-categories: [GIS, Conservation, Modeling]
+categories: [Conservation Planning]
 format: 
   html: 
     code-fold: true 

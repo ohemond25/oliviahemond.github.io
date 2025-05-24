@@ -1,5 +1,5 @@
 ---
-title: "Forest Restoration"
+title: "Forest Restoration Reduces Wildfire Risk and Increases Carbon Storage"
 description: "Visualizing the benefits of different forest restoration practices in the Sierra Nevada"
 author: "Olivia Hemond"
 date: 03-11-2025
@@ -7,7 +7,7 @@ image: sierra_trees.JPG
 citation: 
   url: https://ohemond25.github.io/oliviahemond.github.io/posts/2025-03-11-forest-restoration 
 draft: false
-categories: [R, Visualization, Restoration, Conservation]
+categories: [Data Science, Conservation Planning, Strategic Communications]
 format: 
   html: 
     code-fold: true 
@@ -70,7 +70,7 @@ As an ecologist and environmental scientist, I loved reading this paper. But for
 
 ### Final Infographic
 
-![Infographic showing the benefits and relative strengths of different forest restoration practices. ](infographic.jpg){fig-align="center" width="8.5in"}
+![Infographic showing the benefits and relative strengths of different forest restoration practices.](infographic.jpg){fig-align="center" width="8.5in"}
 
 This infographic is made up of three individual plots that I created in R, then stitched together using Affinity Designer. Next, I'll walk you through the steps I took to put this infographic together.
 
@@ -487,6 +487,94 @@ It is essential to explicitly consider different design elements when creating a
 
 **Diversity, Equity, and Inclusion (DEI):** DEI is essential to consider for any data that depicts people, places, and communities. However, I did not end up incorporating a DEI lens into this piece of work because of the nature of my data. This data solely described physical characteristics of forests, and did not address any aspect of the people who may be nearby or involved in their management. Thus, there was not a DEI context to consider in this instance, but I would urge you to always consider whether DEI needs to be included in your own visualizations!
 :::
+
+## Presentation Slides
+
+I also created a presentation to showcase a modified version of this data visualization. This presentation is tailored to informed but non-expert audiences, and is designed to be presented in a 12-minute time slot.
+
+::: {.carousel-container}
+
+<!-- Carousel Styles -->
+<style>
+.carousel-container {
+  max-width: 900px;
+  margin: auto;
+  position: relative;
+}
+.carousel-slide {
+  display: none;
+  width: 100%;
+}
+.carousel-slide.active {
+  display: block;
+}
+.carousel-buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+.carousel-buttons button {
+  margin: 0 5px;
+  padding: 6px 10px;
+}
+</style>
+
+<!-- Carousel HTML -->
+<div id="pdfCarousel">
+  <img src="slides/slide1.jpg" class="carousel-slide active">
+  <img src="slides/slide2.jpg" class="carousel-slide">
+  <img src="slides/slide3.jpg" class="carousel-slide">
+  <img src="slides/slide4.jpg" class="carousel-slide">
+  <img src="slides/slide5.jpg" class="carousel-slide">
+  <img src="slides/slide6.jpg" class="carousel-slide">
+  <img src="slides/slide7.jpg" class="carousel-slide">
+  <img src="slides/slide8.jpg" class="carousel-slide">
+  <img src="slides/slide9.jpg" class="carousel-slide">
+  <img src="slides/slide10.jpg" class="carousel-slide">
+  <img src="slides/slide11.jpg" class="carousel-slide">
+  <img src="slides/slide12.jpg" class="carousel-slide">
+  <img src="slides/slide13.jpg" class="carousel-slide">
+  <img src="slides/slide14.jpg" class="carousel-slide">
+  <img src="slides/slide15.jpg" class="carousel-slide">
+  <img src="slides/slide16.jpg" class="carousel-slide">
+  <img src="slides/slide17.jpg" class="carousel-slide">
+  <img src="slides/slide18.jpg" class="carousel-slide">
+  <img src="slides/slide19.jpg" class="carousel-slide">
+  <img src="slides/slide20.jpg" class="carousel-slide">
+  
+</div>
+<div class="carousel-buttons">
+  <button onclick="prevSlide()">Previous</button>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Carousel Script -->
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('#pdfCarousel .carousel-slide');
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+</script>
+
+:::
+
+
+Additionally, I created a short version: one slide, which goes along with a 3-minute flash talk.
+
+![](flash_talk.png){fig-align="center"}
 
 ## Data Citation
 

@@ -1,0 +1,29 @@
+---
+title: "Storytelling Can Garner Support for Forest Management"
+description: "Using the power of storytelling to combat misinformation and distrust surrounding forest treatments"
+author: "Olivia Hemond & Izzy Sofio"
+date: 06-06-2025
+image: managers.jpg
+citation: 
+  url: https://ohemond25.github.io/oliviahemond.github.io/posts/2025-06-06-forest-stories 
+draft: false
+categories: [Strategic Communications]
+format: 
+  html: 
+    code-fold: true 
+    embed-resources: true
+editor: visual
+execute: 
+  eval: true
+  echo: true 
+  message: false 
+  warning: false
+---
+
+## Background
+
+(This is a work in progress. Will provide background information on the motivations and goals of the project, then include the final deliverables when they're done)
+
+## Story 1: Historical Wildfire Suppression
+
+## Story 2: Healthy Forests Need to Burn

@@ -1,18 +1,17 @@
 ---
-title: "Binary Logistic Regression"
+title: "Machine Learning Algorithms Can Accurately Classify Plant Species"
 description: "Using a binary logistic regression model to classify plant species"
 author: "Olivia Hemond"
 date: 03-01-2024
-image: fig1.png
+image: serenoa_repens.jpg
 draft: false
-categories: [R, Modeling, Regression, Visualization, Cross-Validation]
+categories: [Data Science]
 format: 
   html:
     code-fold: true
     toc: true
     embed-resources: true
 editor: visual
-theme: minty
 execute: 
   echo: true
   message: false

@@ -20,17 +20,15 @@ about:
 
 ### Hello!
 
-I am an environmental scientist passionate about advancing nature-based solutions for ecological and societal resilience. 
+I am an environmental scientist passionate about advancing nature-based solutions for climate resilience. I am a practical and analytical problem-solver, and believe strongly in the importance of cross-disciplinary collaboration.
 
-### Professional Interests
+My interests span urban ecology, forest and land management, and climate adaptation.
 
-Conservation planning & policy \| Climate adaptation & resilience \| Urban sustainability \| Green infrastructure \| Wetlands protection 
+### Highlighted Skills
 
-### Skillsets
+Data Science & GIS \| Conservation Planning \| Strategic Communications
 
-Data analysis & visualization \| Geospatial analysis & GIS \| Communications \| Human-centered design \| Graphic design
-
-### Recent & Ongoing Projects
+### Explore My Recent & Ongoing Projects
 
 [Climate Adaptation for Forest Management](https://bren.ucsb.edu/projects/integrating-climate-adaptation-strategies-local-collaborative-forest-management-northern)
 

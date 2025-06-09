@@ -7,7 +7,7 @@ image: la-skyline.jpg
 citation: 
   url: https://ohemond25.github.io/oliviahemond.github.io/posts/2024-04-21-shiny
 draft: false
-categories: [Strategic Communications, Data Science]
+categories: [Strategic Communication, Data Science]
 format: 
   html: 
     code-fold: true 

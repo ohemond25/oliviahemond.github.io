@@ -7,7 +7,7 @@ image: smog.jpg
 citation: 
   url: https://ohemond25.github.io/oliviahemond.github.io/posts/2025-02-05-podcast 
 draft: false
-categories: [Strategic Communications]
+categories: [Strategic Communication]
 format: 
   html: 
     code-fold: true 

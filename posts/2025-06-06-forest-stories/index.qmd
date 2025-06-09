@@ -7,7 +7,7 @@ image: managers.jpg
 citation: 
   url: https://ohemond25.github.io/oliviahemond.github.io/posts/2025-06-06-forest-stories 
 draft: false
-categories: [Strategic Communications]
+categories: [Strategic Communication]
 format: 
   html: 
     code-fold: true 
@@ -22,8 +22,204 @@ execute:
 
 ## Background
 
-(This is a work in progress. Will provide background information on the motivations and goals of the project, then include the final deliverables when they're done)
+> *"I'd rather see my home burn than these trees cut"*
+>
+> *— A resident of the Upper South Platte Watershed*
 
-## Story 1: Historical Wildfire Suppression
+There is an ongoing public debate in the Upper South Platte Watershed outside of Denver, Colorado. The area is heavily forested and mountainous, beautiful and wild but also increasingly a fire hazard to those that live there.
 
-## Story 2: Healthy Forests Need to Burn
+In response to growing concerns about wildfire risk and forest health, land managers in the Upper South Platte Partnership (USPP) have been conducting forest restoration treatments. Oftentimes, this involves thinning the forest, essentially removing some amount of trees and underbrush to reduce fire risk and give the remaining trees more space and nutrients to grow. (For those interested in learning more about what forest treatments are, and how they work, [see my post here!](https://ohemond25.github.io/oliviahemond.github.io/posts/2025-03-11-forest-restoration/))
+
+While most members of these rural communities support the important work that foresters do, a vocal minority is upset by it. They believe that foresters are cutting down trees not to protect the community, but to support the logging industry. They don't think that forest treatments are effective, and in fact, they see them as harmful to wildlife and water resources. This group has signed petitions, funded local newspaper articles, and hosted events to try to convince others that these treatments must stop.
+
+The USPP is working to develop more effective educational programs and communication materials in order to work *with* the communities in the Watershed on issues of forest management. To aid their approach, Izzy and I developed two stories to be used on-the-ground during USPP "walk-and-talk" outreach events.
+
+Storytelling is an effective tool to reduce polarization and bias, and to build trust and community. We as humans love to listen to stories. It is often how we understand our world. We remember stories better than we can remember facts or statistics. Their emotional power is persuasive, and can change minds and attitudes. Additionally, by getting a group of people together and emphasizing what they have in common—their *shared values*—we can open the door for free discussion and reconsideration of viewpoints.
+
+Stories are powerful agents of change. We hope you enjoy exploring ours!
+
+## Story 1: Trees Through Time
+
+A story of historical to present-day forest management. Lead Author: Olivia Hemond
+
+::::: carousel-container
+<!-- Carousel Styles -->
+
+```{=html}
+<style>
+.carousel-container {
+  max-width: 900px;
+  margin: auto;
+  position: relative;
+}
+.carousel-slide {
+  display: none;
+  width: 100%;
+}
+.carousel-slide.active {
+  display: block;
+}
+.carousel-buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+.carousel-buttons button {
+  margin: 0 5px;
+  padding: 6px 10px;
+  height: 40px; /* force consistent height */
+}
+</style>
+```
+
+<!-- Carousel HTML -->
+
+::: {#pdfCarousel1}
+<img src="slides/slide1.jpg" class="carousel-slide active"/> 
+<img src="slides/slide2.jpg" class="carousel-slide"/> 
+<img src="slides/slide3.jpg" class="carousel-slide"/> 
+<img src="slides/slide4.jpg" class="carousel-slide"/> 
+<img src="slides/slide5.jpg" class="carousel-slide"/> 
+<img src="slides/slide6.jpg" class="carousel-slide"/> 
+<img src="slides/slide7.jpg" class="carousel-slide"/> 
+<img src="slides/slide8.jpg" class="carousel-slide"/> 
+<img src="slides/slide9.jpg" class="carousel-slide"/> 
+<img src="slides/slide10.jpg" class="carousel-slide"/> 
+<img src="slides/slide11.jpg" class="carousel-slide"/> 
+<img src="slides/slide12.jpg" class="carousel-slide"/> 
+<img src="slides/slide13.jpg" class="carousel-slide"/> 
+<img src="slides/slide14.jpg" class="carousel-slide"/> 
+<img src="slides/slide15.jpg" class="carousel-slide"/> 
+<img src="slides/slide16.jpg" class="carousel-slide"/> 
+<img src="slides/slide17.jpg" class="carousel-slide"/> 
+<img src="slides/slide18.jpg" class="carousel-slide"/> 
+:::
+
+::: carousel-buttons
+<button onclick="prevSlide1()">
+
+Previous
+
+</button>
+
+<button onclick="nextSlide1()">Next</button>
+:::
+
+<!-- Carousel Script -->
+
+```{=html}
+<script>
+let currentSlide1 = 0;
+const slides1 = document.querySelectorAll('#pdfCarousel1 .carousel-slide');
+
+function showSlide1(index) {
+  slides1.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+function nextSlide1() {
+  currentSlide1 = (currentSlide1 + 1) % slides1.length;
+  showSlide1(currentSlide1);
+}
+
+function prevSlide1() {
+  currentSlide1 = (currentSlide1 - 1 + slides1.length) % slides1.length;
+  showSlide1(currentSlide1);
+}
+</script>
+```
+:::::
+
+## Story 2: Fire on the Landscape
+
+A story of prescribed burning in ponderosa pine forests. Lead Author: Izzy Sofio
+
+::::: carousel-container
+<!-- Carousel Styles -->
+
+```{=html}
+<style>
+.carousel-container {
+  max-width: 900px;
+  margin: auto;
+  position: relative;
+}
+.carousel-slide {
+  display: none;
+  width: 100%;
+}
+.carousel-slide.active {
+  display: block;
+}
+.carousel-buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+.carousel-buttons button {
+  margin: 0 5px;
+  padding: 6px 10px;
+  height: 40px; /* force consistent height */
+}
+</style>
+```
+
+<!-- Carousel HTML -->
+
+::: {#pdfCarousel2}
+<img src="slides2/slide1.jpg" class="carousel-slide active"/> 
+<img src="slides2/slide2.jpg" class="carousel-slide"/> 
+<img src="slides2/slide3.jpg" class="carousel-slide"/> 
+<img src="slides2/slide4.jpg" class="carousel-slide"/> 
+<img src="slides2/slide5.jpg" class="carousel-slide"/> 
+<img src="slides2/slide6.jpg" class="carousel-slide"/> 
+<img src="slides2/slide7.jpg" class="carousel-slide"/> 
+<img src="slides2/slide8.jpg" class="carousel-slide"/> 
+<img src="slides2/slide9.jpg" class="carousel-slide"/> 
+<img src="slides2/slide10.jpg" class="carousel-slide"/> 
+<img src="slides2/slide11.jpg" class="carousel-slide"/> 
+<img src="slides2/slide12.jpg" class="carousel-slide"/> 
+<img src="slides2/slide13.jpg" class="carousel-slide"/> 
+<img src="slides2/slide14.jpg" class="carousel-slide"/> 
+<img src="slides2/slide15.jpg" class="carousel-slide"/> 
+<img src="slides2/slide16.jpg" class="carousel-slide"/> 
+<img src="slides2/slide17.jpg" class="carousel-slide"/> 
+<img src="slides2/slide18.jpg" class="carousel-slide"/> 
+:::
+
+::: carousel-buttons
+<button onclick="prevSlide2()">
+
+Previous
+
+</button>
+
+<button onclick="nextSlide2()">Next</button>
+:::
+
+<!-- Carousel Script -->
+
+```{=html}
+<script>
+let currentSlide2 = 0;
+const slides2 = document.querySelectorAll('#pdfCarousel2 .carousel-slide');
+
+function showSlide2(index) {
+  slides2.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+function nextSlide2() {
+  currentSlide2 = (currentSlide2 + 1) % slides2.length;
+  showSlide2(currentSlide2);
+}
+
+function prevSlide2() {
+  currentSlide2 = (currentSlide2 - 1 + slides2.length) % slides2.length;
+  showSlide2(currentSlide2);
+}
+</script>
+```
+:::::
+
+

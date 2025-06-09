@@ -7,7 +7,7 @@ image: colorado.jpg
 citation: 
   url: https://ohemond25.github.io/oliviahemond.github.io/posts/2025-04-25-gp 
 draft: false
-categories: [Strategic Communications, Conservation Planning]
+categories: [Strategic Communication, Conservation Planning]
 format: 
   html: 
     code-fold: true 

@@ -26,6 +26,6 @@ I am a practical and analytical problem-solver, and believe strongly in the impo
 
 ### Highlighted Skills
 
-Data Science & GIS \| Conservation Planning \| Strategic Communications
+Data Science & GIS \| Conservation Planning \| Strategic Communication
 
 #### <i class="fa-solid fa-seedling" style="color: #6aac96;"></i> [Explore My Portfolio of Recent Projects](https://ohemond25.github.io/oliviahemond.github.io/projects.html)

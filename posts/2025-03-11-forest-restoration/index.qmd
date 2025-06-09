@@ -7,7 +7,7 @@ image: sierra_trees.JPG
 citation: 
   url: https://ohemond25.github.io/oliviahemond.github.io/posts/2025-03-11-forest-restoration 
 draft: false
-categories: [Data Science, Conservation Planning, Strategic Communications]
+categories: [Data Science, Conservation Planning, Strategic Communication]
 format: 
   html: 
     code-fold: true 
